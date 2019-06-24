@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "./axios";
 import { Scanner } from "./scanner";
+import FindDocs from "./find-docs";
 
 import { Home } from "./home";
 
@@ -76,7 +77,7 @@ export class App extends React.Component {
                         </a>
                     </header>
                     <div className="app-body">
-                        <h2>app.js content</h2>
+                        <Find-docs />
                         <button className="cam-btn" onClick={this.showUploader}>
                             Scanner
                         </button>

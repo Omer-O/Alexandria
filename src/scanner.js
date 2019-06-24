@@ -21,22 +21,42 @@ export class Scanner extends React.Component {
                 this.setState({
                     text: result.text
                 });
+                console.log("state.text", this.state.text == result.text);
             });
     }
     handleChange(event) {
         this.setState({});
     }
-    submit(e) {}
+    submit() {
+        let text = this.state.text;
+        axios
+            .post("/store-document", {
+                text: text
+            })
+            .then(() => {
+                console.log("this.state.text", text);
+            });
+    }
     render() {
         return (
-            <div className="page-containe">
+            <div className="page-container">
                 <div className="x-btn" onClick={this.props.hideUploader}>
                     X
                 </div>
                 <div className="demo-img">
                     <img src="./img/demo.jpg" />
                 </div>
-                <div className="display-text">{this.state.text}</div>
+                <div className="display-text">
+                    <p>{this.state.text}</p>
+                </div>
+                <button
+                    className="save-btn"
+                    onClick={e => {
+                        this.submit();
+                    }}
+                >
+                    Save doc
+                </button>
             </div>
         );
     }
