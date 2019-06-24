@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -8,8 +8,9 @@ import { Scanner } from "./scanner";
 import FindDocs from "./find-docs";
 import { PopMenu } from "./popmenu";
 import { Documents } from "./documents";
+import { WebcamCapture } from "./webcam";
 import { Home } from "./home";
-
+import { CameraFeed } from "./scanner-webcam";
 export class App extends React.Component {
     constructor(props) {
         super(props);
@@ -20,6 +21,7 @@ export class App extends React.Component {
         this.uploaded = this.uploaded.bind(this);
         this.showUploader = this.showUploader.bind(this);
         this.hideUploader = this.hideUploader.bind(this);
+        this.uploadImage = this.uploadImage.bind(this);
     }
 
     uploaded(url) {
@@ -37,6 +39,10 @@ export class App extends React.Component {
         this.setState({
             uploaderVisible: false
         });
+    }
+    uploadImage(file) {
+        const formData = new FormData();
+        formData.append("file", file);
     }
 
     componentDidMount() {
@@ -78,6 +84,10 @@ export class App extends React.Component {
                         <PopMenu />
                     </header>
                     <div className="app-body">
+                        <div className="camera-capture">
+                            <CameraFeed sendFile={this.uploadImage} />
+                        </div>
+                        <WebcamCapture />
                         <Find-docs />
                         <button className="cam-btn" onClick={this.showUploader}>
                             Scanner
