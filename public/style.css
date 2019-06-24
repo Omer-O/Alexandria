@@ -157,3 +157,16 @@ header {
     bottom: 50px;
     right: 50px;
 }
+.demo-img {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+.demo-img img {
+    width: 90%;
+}
+.display-text {
+    background-color: white;
+    height: 500px;
+    width: 80%;
+}
