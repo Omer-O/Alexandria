@@ -57,5 +57,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/tesseract.js": "0.0.2"
+  }
 }
