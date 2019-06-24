@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
 
-export function Home() {
+export function FindDocs() {
     const [query, setQuery] = useState("last10");
     const [docs, setdoc] = useState([]);
 
@@ -37,6 +37,10 @@ export function Home() {
                 onChange={e => setQuery(e.target.value)}
             />
             <div className="find-main">
+                <div className="filter">
+                    <h2> Filter results</h2>
+                </div>
+
                 <div className="results">
                     {docs.length ? (
                         docs.map(doc => (
@@ -44,11 +48,31 @@ export function Home() {
                                 <div className="search-result">
                                     <div className="">
                                         <Link to={`/doc/${doc.id}`}>
-                                            <div>
-                                                <h3>{doc.title}</h3>
-                                                <p>{doc.txt}</p>
-                                            </div>
+                                            <img
+                                                src={
+                                                    doc.txt ||
+                                                    "/img/default.png"
+                                                }
+                                                alt={`${doc.title} ${doc.last}`}
+                                            />
                                         </Link>
+                                    </div>
+                                    <div className="info">
+                                        <Link to={`/doc/${doc.id}`}>
+                                            <h3>
+                                                {doc.title} {doc.last}
+                                            </h3>
+                                        </Link>
+
+                                        <div className="card-bio">
+                                            <p>{doc.bio}</p>
+                                        </div>
+                                    </div>
+                                    <div className="friend-btn-container">
+                                        <FriendshipButton receiverId={doc.id} />
+                                        <button className="friend-btn small-message-btn">
+                                            ...
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +83,10 @@ export function Home() {
                                 <p>We couldn't find anything for</p>
                                 <h4>{query}</h4>
                             </span>
-                            <p>Try entering something different.</p>
+                            <p>
+                                Looking for people or posts? Try entering a
+                                name, location or different words.
+                            </p>
                         </div>
                     )}
                 </div>

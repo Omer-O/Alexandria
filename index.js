@@ -116,6 +116,36 @@ app.get("/user", (req, res) => {
             });
     }
 });
+////////////////////////////FIND DOCS//////////////////////////
+
+app.post("/find-docs", (req, res) => {
+    console.log("*******GET /USERS*******");
+    db.findDocs(req.body.find)
+        .then(results => {
+            let docs = results.rows;
+
+            res.json({
+                docs: docs
+            });
+        })
+        .catch(err => {
+            console.log("FIND DOCS ERROR", err);
+        });
+});
+///////////////////////////////////////////////////////////////////////////////
+app.post("/store-document", async (req, res) => {
+    console.log("*******store document*******");
+    const userId = req.session.userId;
+    const text = req.body.text;
+    const title = "title";
+    const tags = "tags";
+    try {
+        const stored = await db.storeInDocuments(userId, text, title, tags);
+        console.log("stored doc", stored);
+    } catch (e) {
+        console.log("error at stored doc", e);
+    }
+});
 
 /////////////////////////////////////registration login//////////////////////////////////////
 

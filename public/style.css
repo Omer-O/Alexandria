@@ -151,6 +151,7 @@ header {
 .page-container {
     height: 100%;
     width: 100%;
+    padding: 100px;
 }
 .cam-btn {
     position: fixed;
@@ -160,13 +161,79 @@ header {
 .demo-img {
     display: flex;
     justify-content: center;
-    padding: 30px;
+    margin-bottom: 50px;
 }
 .demo-img img {
     width: 90%;
 }
 .display-text {
+    display: flex;
+    justify-content: center;
     background-color: white;
     height: 500px;
-    width: 80%;
+    width: 90%;
+    padding: 50px;
+}
+/*--------------------home-------------------------- */
+.find-people {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.find-people input {
+    position: absolute;
+    top: 7px;
+    left: 22%;
+    width: 397px;
+    height: 26px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.find-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.filter {
+    color: #4b4f56;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 30%;
+}
+.results {
+    margin-top: 10px;
+    width: 620px;
+    border: 1px solid dark-grey;
+    border-radius: 5px;
+}
+.search-result {
+    background: white;
+    height: 7vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 30px 20px 20px;
+    color: #385898;
+    margin-bottom: 2px;
+}
+.no-results {
+    padding: 20px;
+}
+.results h3:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.search-result img {
+    width: 80px;
+    height: 80px;
+    margin-right: 50px;
+    border-radius: 100%;
+    border: 1px solid dark-grey;
+    cursor: pointer;
+}
+.all-docs {
+    background-color: white;
 }
