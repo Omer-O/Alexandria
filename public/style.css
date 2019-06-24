@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    text-decoration: none;
+}
+a {
+    color: #365899;
+}
+body {
+    background: #f2f3f5;
+    font-family: Calluna, Arial, sans-serif;
+    min-height: 1000px;
+}
+button {
+    height: 100px;
+    width: 250px;
+    font-size: 30px;
+    margin: 20px;
+    border-radius: 50px;
+}
+/*--------------------login-------------------------- */
+
+.welcome-wrapper {
+    background-color: #e9ebee;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.bluebar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    color: white;
+    background-color: #3b5998;
+    width: 100vw;
+}
+.bluebar h1 {
+    font-size: 40px;
+}
+
+.login-form form {
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+}
+.login-form button {
+    background-color: #365899;
+    border-color: #29487d;
+    color: white;
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+}
+form div {
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input {
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+}
+.login-form div {
+    margin-left: 10px;
+    width: 100%;
+    height: 15px;
+}
+.login-form span {
+    margin-right: 20px;
+    display: inline-block;
+    width: 150px;
+    font-size: 12px;
+}
+/*--------------------Registration-------------------------- */
+
+.registration-container {
+    padding: 0 100px;
+    color: #333;
+    display: flex;
+    flex-direction: row;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.registration-form input {
+    height: 100px;
+    margin-top: 20px;
+    order: 1px solid #ccd0d5;
+    border-radius: 5px;
+    margin-right: 20px;
+    width: 400px;
+}
+
+.registration-form button {
+    width: 400px;
+    height: 100px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #69a74e;
+    box-shadow: inset 0 1px 1px #a4e388;
+    border-color: #3b6e22;
+    border-radius: 5px;
+    color: white;
+}
+.error-message {
+    padding: 10px;
+}
+
+/*--------------------------------------------------------------------------- */
+
+/*--------------------header-------------------------- */
+
+header {
+    font-weight: bold;
+    background-color: #14357a;
+    border: solid black 1px;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: space;
+    padding-left: 20%;
+    padding-right: 15%;
+}
+.nav-btn {
+    height: 100%;
+    padding: 20px;
+    font-size: 30px;
+    font-size: white;
+}
+.app-body {
+    background-color: lightgrey;
+    height: 92vh;
+}
+.page-container {
+    height: 100%;
+    width: 100%;
+}
+.cam-btn {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
