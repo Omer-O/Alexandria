@@ -6,7 +6,8 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "./axios";
 import { Scanner } from "./scanner";
 import FindDocs from "./find-docs";
-
+import { PopMenu } from "./popmenu";
+import { Documents } from "./documents";
 import { Home } from "./home";
 
 export class App extends React.Component {
@@ -27,7 +28,6 @@ export class App extends React.Component {
             uploaderVisible: false
         });
     }
-
     showUploader() {
         this.setState({
             uploaderVisible: true
@@ -75,6 +75,7 @@ export class App extends React.Component {
                         <a href="/logout" className="nav-btn">
                             <FontAwesomeIcon icon={faSignOutAlt} />
                         </a>
+                        <PopMenu />
                     </header>
                     <div className="app-body">
                         <Find-docs />

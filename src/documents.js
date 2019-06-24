@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 class Documents extends React.Component {
     componentDidMount() {
         console.log("componentDidMount!!!!!!");
-        this.props.dispatch(getDocs());
+        this.props.dispatch(findDocs());
     } //componentDidMount close.
     render() {
         if (!this.props.myDocs) {

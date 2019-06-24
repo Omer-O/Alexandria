@@ -2,7 +2,7 @@ import axios from "./axios";
 
 // all ajax requests will go in this file
 
-export async function getDocs() {
+export async function findDocs() {
     try {
         let data = await axios.get("/get-docs");
         console.log("actions found these docs: ", data.data);
@@ -15,19 +15,19 @@ export async function getDocs() {
     }
     return {};
 }
-export async function getText() {
-    try {
-        let data = await axios.get("/get-text");
-        console.log("actions found these text: ", data.data);
-        return {
-            type: "GET_TEXT",
-            data: data.data
-        };
-    } catch (err) {
-        console.log(err);
-    }
-    return {};
-}
+// export async function findDocs() {
+//     try {
+//         let data = await axios.get("/get-text");
+//         console.log("actions found these text: ", data.data);
+//         return {
+//             type: "GET_TEXT",
+//             data: data.data
+//         };
+//     } catch (err) {
+//         console.log(err);
+//     }
+//     return {};
+// }
 //
 // export function send(id) {
 //     axios.post("/add-friend", {
