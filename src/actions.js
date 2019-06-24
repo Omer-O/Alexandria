@@ -2,12 +2,12 @@ import axios from "./axios";
 
 // all ajax requests will go in this file
 
-export async function getFriends() {
+export async function getDocs() {
     try {
-        let data = await axios.get("/get-friends");
-        console.log("actions found these friends: ", data.data);
+        let data = await axios.get("/get-docs");
+        console.log("actions found these docs: ", data.data);
         return {
-            type: "GET_FRIENDS",
+            type: "GET_DOCS",
             data: data.data
         };
     } catch (err) {
@@ -15,59 +15,38 @@ export async function getFriends() {
     }
     return {};
 }
-
-export function send(id) {
-    axios.post("/add-friend", {
-        otherUserId: id
-    });
-    console.log("action: friend request sent");
-    return {
-        type: "SEND_FRIEND_REQUEST",
-        data: id
-    };
+export async function getText() {
+    try {
+        let data = await axios.get("/get-text");
+        console.log("actions found these text: ", data.data);
+        return {
+            type: "GET_TEXT",
+            data: data.data
+        };
+    } catch (err) {
+        console.log(err);
+    }
+    return {};
 }
-
-export function accept(id) {
-    axios.post("/accept-friendship", {
-        otherUserId: id
-    });
-    console.log("action: accepted friend request");
-    return {
-        type: "ACCEPT_FRIEND_REQUEST",
-        data: id
-    };
-}
-export function unfriend(id) {
-    axios.post("/end-friendship", {
-        otherUserId: id
-    });
-    console.log("action: end friendship");
-    return {
-        type: "UNFRIEND",
-        data: id
-    };
-}
-export function getMessages(msgs) {
-    return {
-        type: "GET_CHAT_HISTORY",
-        data: msgs
-    };
-}
-export function getPrivateMessages(msgs) {
-    return {
-        type: "GET_PRIVATE_CHAT_HISTORY",
-        data: msgs
-    };
-}
-export function newMessage(msg) {
-    return {
-        type: "NEW_MESSAGE",
-        data: msg
-    };
-}
-export function currentChat(id) {
-    return {
-        type: "CURRENT_CHAT",
-        data: id
-    };
-}
+//
+// export function send(id) {
+//     axios.post("/add-friend", {
+//         otherUserId: id
+//     });
+//     console.log("action: friend request sent");
+//     return {
+//         type: "SEND_FRIEND_REQUEST",
+//         data: id
+//     };
+// }
+//
+// export function accept(id) {
+//     axios.post("/accept-friendship", {
+//         otherUserId: id
+//     });
+//     console.log("action: accepted friend request");
+//     return {
+//         type: "ACCEPT_FRIEND_REQUEST",
+//         data: id
+//     };
+// }
