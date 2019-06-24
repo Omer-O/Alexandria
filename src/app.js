@@ -85,7 +85,7 @@ export class App extends React.Component {
                     </header>
                     <div className="app-body">
                         <div className="camera-capture">
-                            <CameraFeed sendFile={this.uploadImage} />
+                            // <CameraFeed sendFile={this.uploadImage} />
                         </div>
                         <WebcamCapture />
                         <Find-docs />

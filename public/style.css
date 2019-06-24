@@ -175,17 +175,18 @@ header {
     padding: 50px;
 }
 /*--------------------home-------------------------- */
-.find-people {
+.docs-display {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 100px;
 }
 .find-people input {
     position: absolute;
     top: 7px;
     left: 22%;
     width: 397px;
-    height: 26px;
+    height: 50px;
     border: none;
     display: flex;
     flex-direction: column;
@@ -236,4 +237,26 @@ header {
 }
 .all-docs {
     background-color: white;
+}
+.profile-wraper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+}
+.popup-menu {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100%;
+    background-color: lightgrey;
+}
+.bright-side {
+    width: 70vw;
+}
+.dark-side {
+    width: 30vw;
+    background-color: black;
+    opacity: 0.7;
 }
