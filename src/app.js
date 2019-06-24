@@ -6,7 +6,7 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "./axios";
 import { Scanner } from "./scanner";
 import FindDocs from "./find-docs";
-import { PopMenu } from "./popmenu";
+import { ProfileMenu } from "./profile-menu";
 import { Documents } from "./documents";
 import { Home } from "./home";
 
@@ -75,8 +75,9 @@ export class App extends React.Component {
                         <a href="/logout" className="nav-btn">
                             <FontAwesomeIcon icon={faSignOutAlt} />
                         </a>
-                        <PopMenu />
+                        <ProfileMenu />
                     </header>
+                    F
                     <div className="app-body">
                         <Find-docs />
                         <button className="cam-btn" onClick={this.showUploader}>
@@ -88,6 +89,7 @@ export class App extends React.Component {
                                 hideUploader={this.hideUploader}
                             />
                         )}
+
                         <Route path={"/home"} render={() => <Home />} />
                     </div>
                 </div>

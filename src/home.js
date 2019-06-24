@@ -29,7 +29,7 @@ export function Home() {
     );
 
     return (
-        <div className="all-docs">
+        <div className="docs-display">
             <input
                 name="find"
                 type="text"
