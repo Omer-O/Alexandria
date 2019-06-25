@@ -6,11 +6,11 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "./axios";
 import { Scanner } from "./scanner";
 import FindDocs from "./find-docs";
-import { PopMenu } from "./popmenu";
 import { Documents } from "./documents";
 import { WebcamCapture } from "./webcam";
 import { Home } from "./home";
 import { CameraFeed } from "./scanner-webcam";
+
 export class App extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +21,7 @@ export class App extends React.Component {
         this.uploaded = this.uploaded.bind(this);
         this.showUploader = this.showUploader.bind(this);
         this.hideUploader = this.hideUploader.bind(this);
-        this.uploadImage = this.uploadImage.bind(this);
+        // this.uploadImage = this.uploadImage.bind(this);
     }
 
     uploaded(url) {
@@ -40,11 +40,10 @@ export class App extends React.Component {
             uploaderVisible: false
         });
     }
-    uploadImage(file) {
-        const formData = new FormData();
-        formData.append("file", file);
-    }
-
+    // uploadImage(file) {
+    //     const formData = new FormData();
+    //     formData.append("file", file);
+    // }
     componentDidMount() {
         axios.get("/user").then(({ data }) => {
             if (data.error) {
@@ -81,17 +80,16 @@ export class App extends React.Component {
                         <a href="/logout" className="nav-btn">
                             <FontAwesomeIcon icon={faSignOutAlt} />
                         </a>
-                        <PopMenu />
                     </header>
                     <div className="app-body">
-                        <div className="camera-capture">
-                            // <CameraFeed sendFile={this.uploadImage} />
-                        </div>
+                        <div className="camera-capture" />
                         <WebcamCapture />
+                        <CameraFeed />
                         <Find-docs />
                         <button className="cam-btn" onClick={this.showUploader}>
                             Scanner
                         </button>
+
                         {this.state.uploaderVisible && (
                             <Scanner
                                 uploaded={this.uploaded}
