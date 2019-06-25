@@ -247,7 +247,7 @@ header .div {
 }
 .profile-wraper {
     position: absolute;
-    left: 0;
+    left: -100vw;
     top: 10vh;
     height: 100%;
     width: 100vw;
@@ -274,4 +274,8 @@ header .div {
     width: 30vw;
     background-color: black;
     opacity: 0.7;
+}
+.camera-container {
+    height: 100vh;
+    width: 100vw;
 }
