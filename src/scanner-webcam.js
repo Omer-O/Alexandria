@@ -1,63 +1,53 @@
 import React, { Component } from "react";
-import axios from "./axios";
-import Camera, { FACING_MODES, IMAGE_TYPES } from "react-html5-camera-photo";
-import "react-html5-camera-photo/build/css/index.css";
+import { Photo } from "./photo";
+import { Camera } from "./camera";
 
-export class App extends Component {
-    onTakePhoto(dataUri) {
-        console.log("takePhoto work!!!!");
-        // axios
-        //     .post("/data-uri", formData)
-        //     .then(result => {
-        //         this.props.uploaded(result.data.imageUrl);
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //         this.setState({
-        //             error: true
-        //         });
-        //     });
+export class CameraFeed extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            constraints: { audio: false, video: { width: 400, height: 300 } }
+        };
+        this.handleStartClick = this.handleStartClick.bind(this);
+        this.takePicture = this.takePicture.bind(this);
+    }
+    componentDidMount() {
+        const canvas = document.querySelector("canvas");
+        const photo = document.getElementById("photo");
+        const context = canvas.getContext("2d");
+        const { width, height } = this.state.constraints.video;
+        context.fillRect(0, 0, width, height);
+
+        const data = canvas.toDataURL("image/png");
+        photo.setAttribute("src", data);
+    }
+    handleStartClick(e) {
+        e.preventDefault();
+        this.takePicture();
     }
 
-    onCameraError(error) {
-        console.error("onCameraError", error);
-    }
+    takePicture() {
+        const canvas = document.querySelector("canvas");
+        const context = canvas.getContext("2d");
+        const video = document.querySelector("video");
+        const photo = document.getElementById("photo");
+        const { width, height } = this.state.constraints.video;
 
-    onCameraStart(stream) {
-        console.log("onCameraStart");
-    }
+        canvas.width = width;
+        canvas.height = height;
+        context.drawImage(video, 0, 0, width, height);
 
-    onCameraStop() {
-        console.log("onCameraStop");
+        const data = canvas.toDataURL("image/png");
+        console.log("this is data of takePicture:", data);
+        photo.setAttribute("src", data);
     }
 
     render() {
         return (
-            <div className="App">
-                <Camera
-                    onTakePhoto={dataUri => {
-                        this.onTakePhoto(dataUri);
-                    }}
-                    onCameraError={error => {
-                        this.onCameraError(error);
-                    }}
-                    idealFacingMode={FACING_MODES.ENVIRONMENT}
-                    idealResolution={{ width: 640, height: 480 }}
-                    imageType={IMAGE_TYPES.JPG}
-                    imageCompression={0.97}
-                    isMaxResolution={false}
-                    isImageMirror={false}
-                    isSilentMode={true}
-                    isDisplayStartCameraError={true}
-                    isFullscreen={true}
-                    sizeFactor={1}
-                    onCameraStart={stream => {
-                        this.onCameraStart(stream);
-                    }}
-                    onCameraStop={() => {
-                        this.onCameraStop();
-                    }}
-                />
+            <div className="capture">
+                <Camera handleStartClick={this.handleStartClick} />
+                <canvas id="canvas" hidden />
+                <Photo />
             </div>
         );
     }
