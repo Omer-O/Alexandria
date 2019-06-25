@@ -3,41 +3,37 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "./axios";
-import { Scanner } from "./scanner";
+import { DocumentViewr } from "./document-viewr";
 import FindDocs from "./find-docs";
 import { Documents } from "./documents";
 import { WebcamCapture } from "./webcam";
 import { Home } from "./home";
+import { ProfileMenu } from "./profile-menu";
 import { CameraFeed } from "./scanner-webcam";
 
 export class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            uploaderVisible: false
+            scannerVisible: false
         };
         this.uploaded = this.uploaded.bind(this);
-        this.showUploader = this.showUploader.bind(this);
-        this.hideUploader = this.hideUploader.bind(this);
+        this.showscanner = this.showscanner.bind(this);
         // this.uploadImage = this.uploadImage.bind(this);
     }
 
-    uploaded(url) {
-        this.setState({
-            imageUrl: url,
-            uploaderVisible: false
-        });
+    showscanner() {
+        if (this.state.scannerVisible) {
+            this.setState({
+                scannerVisible: false
+            });
+        } else {
+            this.setState({
+                scannerVisible: true
+            });
+        }
     }
-    showUploader() {
-        this.setState({
-            uploaderVisible: true
-        });
-    }
-    hideUploader() {
-        this.setState({
-            uploaderVisible: false
-        });
-    }
+
     // uploadImage(file) {
     //     const formData = new FormData();
     //     formData.append("file", file);
@@ -85,19 +81,13 @@ export class App extends React.Component {
                     </header>
 
                     <div className="app-body">
-                        <div className="camera-capture" />
-                        <WebcamCapture />
-                        <CameraFeed />
                         <Find-docs />
-                        <button className="cam-btn" onClick={this.showUploader}>
+                        <button className="cam-btn" onClick={this.showscanner}>
                             Scanner
                         </button>
 
-                        {this.state.uploaderVisible && (
-                            <Scanner
-                                uploaded={this.uploaded}
-                                hideUploader={this.hideUploader}
-                            />
+                        {this.state.scannerVisible && (
+                            <CameraFeed showScanner={this.showScanner} />
                         )}
                         <Route path={"/home"} render={() => <Home />} />
                     </div>

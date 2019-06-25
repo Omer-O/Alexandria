@@ -247,7 +247,7 @@ header .div {
 }
 .profile-wraper {
     position: absolute;
-    left: 0;
+    left: -100vw;
     top: 10vh;
     height: 100%;
     width: 100vw;
