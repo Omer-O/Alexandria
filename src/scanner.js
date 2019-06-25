@@ -55,26 +55,23 @@ export class Scanner extends Component {
         const video = document.querySelector("video");
         const photo = document.getElementById("photo");
         const { width, height } = this.state.constraints.video;
-
         canvas.width = width;
         canvas.height = height;
         context.drawImage(video, 0, 0, width, height);
 
-        const data = canvas.toDataURL("image/jpeg");
-        console.log("this is data of takePicture:", data);
-        const formData = new FormData();
-        formData.append("src", data);
-        axios
-            .post("/store-document", formData)
-            .then(result => {
-                console.log("result of SCANNER:", result);
-            })
-            .catch(err => {
-                console.log(err);
-                this.setState({
-                    error: true
+        canvas.toBlob(function(blob) {
+            console.log("this is data of takePicture:", blob);
+            const formData = new FormData();
+            formData.append("file", blob);
+            axios
+                .post("/store-document", formData)
+                .then(result => {
+                    console.log("result of SCANNER:", result);
+                })
+                .catch(err => {
+                    console.log(err);
                 });
-            });
+        });
     }
 
     render() {
