@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { CapturedImage } from "./captured-image";
 import { Camera } from "./camera";
+import axios from "./axios";
 
 export class Scanner extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ export class Scanner extends Component {
         const { width, height } = this.state.constraints.video;
         context.fillRect(0, 0, width, height);
 
-        const data = canvas.toDataURL("image/png");
+        const data = canvas.toDataURL("image/jpeg");
         photo.setAttribute("src", data);
     }
     handleStartClick(e) {
@@ -54,16 +55,23 @@ export class Scanner extends Component {
         const video = document.querySelector("video");
         const photo = document.getElementById("photo");
         const { width, height } = this.state.constraints.video;
-
         canvas.width = width;
         canvas.height = height;
         context.drawImage(video, 0, 0, width, height);
 
-        const data = canvas.toDataURL("image/png");
-
-        console.log("this is data of takePicture:", data);
-        photo.setAttribute("src", data);
-        this.hideCamera();
+        canvas.toBlob(function(blob) {
+            console.log("this is data of takePicture:", blob);
+            const formData = new FormData();
+            formData.append("file", blob);
+            axios
+                .post("/store-document", formData)
+                .then(result => {
+                    console.log("result of SCANNER:", result);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        });
     }
 
     render() {
