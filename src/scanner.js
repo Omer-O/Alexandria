@@ -58,6 +58,9 @@ export class Scanner extends Component {
         canvas.width = width;
         canvas.height = height;
         context.drawImage(video, 0, 0, width, height);
+        const data = canvas.toDataURL("image/jpeg");
+        photo.setAttribute("src", data);
+        this.hideCamera();
 
         canvas.toBlob(function(blob) {
             console.log("this is data of takePicture:", blob);
