@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
 
-export function Home() {
+export function Home(props) {
     const [query, setQuery] = useState("last10");
     const [docs, setdoc] = useState([]);
 
@@ -39,14 +39,18 @@ export function Home() {
     // 	borderRight: "solid #d4dce9 1px",
     // 	color: "white"
     // };
+    console.log("searchVisible:", props.searchVisible);
+
     return (
         <div className="docs-display">
-            <input
-                name="find"
-                type="text"
-                placeholder="search"
-                onChange={e => setQuery(e.target.value)}
-            />
+            {props.searchVisible && (
+                <input
+                    name="find"
+                    type="text"
+                    placeholder="search"
+                    onChange={e => setQuery(e.target.value)}
+                />
+            )}
             <div className="results">
                 {docs.length ? (
                     docs.map(doc => (

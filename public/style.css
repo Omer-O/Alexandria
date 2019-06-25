@@ -12,6 +12,7 @@ body {
     background: #f2f3f5;
     font-family: Calluna, Arial, sans-serif;
     min-height: 1000px;
+    font-size: 3vh;
 }
 button {
     height: 100px;
@@ -135,7 +136,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: space;
+    align-items: center;
 }
 header .div {
     display: flex;
@@ -170,6 +171,9 @@ header .div {
     bottom: 400px;
     right: 50px;
     z-index: 10;
+}
+.icon {
+    color: white;
 }
 .demo-img {
     display: flex;
@@ -218,15 +222,17 @@ footer div {
 }
 .docs-display input {
     position: absolute;
-    top: 1vh;
-    left: 12vh;
-    width: 300px;
-    height: 8vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
     border: none;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 10;
+    font-size: 6vh;
 }
 
 .results {
@@ -251,6 +257,7 @@ footer div {
 
 .no-results {
     padding: 20px;
+    width: 100vw;
 }
 
 .search-result img {

@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 import axios from "./axios";
 import { DocumentViewr } from "./document-viewr";
 import FindDocs from "./find-docs";
@@ -16,10 +18,14 @@ export class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            scannerVisible: false
+            scannerVisible: false,
+            searchVisible: false
         };
         this.hideScanner = this.hideScanner.bind(this);
         this.showScanner = this.showScanner.bind(this);
+        this.showSearch = this.showSearch.bind(this);
+        this.hideSearch = this.hideSearch.bind(this);
+
         // this.uploadImage = this.uploadImage.bind(this);
     }
 
@@ -28,11 +34,21 @@ export class App extends React.Component {
             scannerVisible: true
         });
         this.state.scannerVisible;
-        console.log("scanner visible", this.state.scannerVisible);
     }
     hideScanner() {
         this.setState({
             scannerVisible: false
+        });
+    }
+    showSearch() {
+        this.setState({
+            searchVisible: true
+        });
+        this.state.scannerVisible;
+    }
+    hideSearch() {
+        this.setState({
+            searchVisible: false
         });
         console.log("scanner visible", this.state.scannerVisible);
     }
@@ -69,13 +85,16 @@ export class App extends React.Component {
                     <header>
                         <div />
                         <div>
+                            <span
+                                className="nav-btn icon"
+                                onClick={this.showSearch}
+                            >
+                                <FontAwesomeIcon icon={faSearch} />
+                            </span>
                             <Link to="/home" className="nav-btn">
                                 <span>Home</span>
                             </Link>
 
-                            <Link to="/profile" className="nav-btn img-icon">
-                                find docs
-                            </Link>
                             <a href="/logout" className="nav-btn">
                                 <FontAwesomeIcon icon={faSignOutAlt} />
                             </a>
@@ -97,7 +116,15 @@ export class App extends React.Component {
                         {this.state.scannerVisible && (
                             <Scanner showScanner={this.showScanner} />
                         )}
-                        <Route path={"/home"} render={() => <Home />} />
+                        <Route
+                            path={"/home"}
+                            render={() => (
+                                <Home
+                                    searchVisible={this.state.searchVisible}
+                                    hideSearchBar={this.hideSearch}
+                                />
+                            )}
+                        />
                     </div>
                     <footer>
                         <div className="footer-btn">
