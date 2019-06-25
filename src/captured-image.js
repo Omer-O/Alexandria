@@ -6,8 +6,9 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 export function CapturedImage(props) {
     return (
         <div className="captured-img-container">
-            {props.cameraVisible && <WebcamCapture />}``
+            {props.cameraVisible && <WebcamCapture />}
             <img id="photo" alt="Your photo" />
+            //captured img display
         </div>
     );
 }

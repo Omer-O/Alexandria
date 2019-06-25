@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "./axios";
 import { DocumentViewr } from "./document-viewr";
@@ -104,12 +105,19 @@ export class App extends React.Component {
 
                     <div className="app-body">
                         <Find-docs />
-                        {!this.state.scannerVisible && (
+                        {!this.state.scannerVisible ? (
                             <button
                                 className="cam-btn"
                                 onClick={this.showScanner}
                             >
                                 <FontAwesomeIcon icon={faCamera} />
+                            </button>
+                        ) : (
+                            <button
+                                className="cam-btn"
+                                onClick={this.hideScanner}
+                            >
+                                <FontAwesomeIcon icon={faUndo} />
                             </button>
                         )}
 
@@ -126,20 +134,6 @@ export class App extends React.Component {
                             )}
                         />
                     </div>
-                    <footer>
-                        <div className="footer-btn">
-                            <span>home</span>
-                        </div>
-                        <div className="footer-btn">
-                            <span>home</span>
-                        </div>
-
-                        <div className="footer-btn" onClick={this.hideScanner}>
-                            <span>back</span>
-                        </div>
-
-                        <ProfileMenu />
-                    </footer>
                 </div>
             </BrowserRouter>
         );
