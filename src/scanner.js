@@ -60,6 +60,7 @@ export class Scanner extends Component {
         context.drawImage(video, 0, 0, width, height);
 
         const data = canvas.toDataURL("image/png");
+
         console.log("this is data of takePicture:", data);
         photo.setAttribute("src", data);
         this.hideCamera();
