@@ -136,11 +136,18 @@ app.post("/find-docs", (req, res) => {
 app.post("/store-document", async (req, res) => {
     console.log("*******store document*******");
     const userId = req.session.userId;
+    const url = "./img/demo.jpg";
     const text = req.body.text;
     const title = "title";
     const tags = "tags";
     try {
-        const stored = await db.storeInDocuments(userId, text, title, tags);
+        const stored = await db.storeInDocuments(
+            userId,
+            imgurl,
+            text,
+            title,
+            tags
+        );
         console.log("stored doc", stored);
     } catch (e) {
         console.log("error at stored doc", e);

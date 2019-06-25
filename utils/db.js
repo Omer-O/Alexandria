@@ -12,10 +12,10 @@ module.exports.storeInUsers = function(first, last, email, password) {
         [first || null, last || null, email || null, password || ""]
     );
 };
-module.exports.storeInDocuments = function(userId, text, title, tags) {
+module.exports.storeInDocuments = function(userId, img_url, text, title, tags) {
     return db.query(
-        `INSERT INTO documents (user_id,txt,title,tags) VALUES ($1, $2, $3, $4) RETURNING id`,
-        [userId, text, title, tags]
+        `INSERT INTO documents (user_id,img_url,txt,title,tags) VALUES ($1, $2, $3, $4, $5) RETURNING id`,
+        [userId, img_url, text, title, tags]
     );
 };
 

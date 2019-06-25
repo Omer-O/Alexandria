@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 export class ProfileMenu extends React.Component {
     constructor(props) {
@@ -25,10 +27,10 @@ export class ProfileMenu extends React.Component {
             <div className="profile-wraper">
                 <div>
                     <button
-                        className="popup-button"
+                        className="popup-btn"
                         onClick={e => this.showMenu(e)}
                     >
-                        menu
+                        <FontAwesomeIcon icon={faUserCircle} />
                     </button>
                 </div>
                 {this.state.showMenu && (

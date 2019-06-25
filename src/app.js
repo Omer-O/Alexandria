@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "./axios";
 import { Scanner } from "./scanner";
@@ -14,8 +13,7 @@ export class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            uploaderVisible: false,
-            query: "last3"
+            uploaderVisible: false
         };
         this.uploaded = this.uploaded.bind(this);
         this.showUploader = this.showUploader.bind(this);
@@ -65,19 +63,22 @@ export class App extends React.Component {
             <BrowserRouter>
                 <div className="app-container">
                     <header>
-                        <Link to="/home" className="nav-btn">
-                            Home
-                        </Link>
+                        <div />
+                        <div>
+                            <Link to="/home" className="nav-btn">
+                                Home
+                            </Link>
 
-                        <Link to="/profile" className="nav-btn img-icon">
-                            find docs
-                        </Link>
-                        <a href="/logout" className="nav-btn">
-                            <FontAwesomeIcon icon={faSignOutAlt} />
-                        </a>
-                        <ProfileMenu />
+                            <Link to="/profile" className="nav-btn img-icon">
+                                find docs
+                            </Link>
+                            <a href="/logout" className="nav-btn">
+                                <FontAwesomeIcon icon={faSignOutAlt} />
+                            </a>
+                            <ProfileMenu />
+                        </div>
                     </header>
-                    F
+
                     <div className="app-body">
                         <Find-docs />
                         <button className="cam-btn" onClick={this.showUploader}>

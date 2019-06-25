@@ -20,6 +20,7 @@ button {
     margin: 20px;
     border-radius: 50px;
 }
+
 /*--------------------login-------------------------- */
 
 .welcome-wrapper {
@@ -130,13 +131,18 @@ header {
     font-weight: bold;
     background-color: #14357a;
     border: solid black 1px;
-    height: 8vh;
+    height: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: space;
-    padding-left: 20%;
-    padding-right: 15%;
+}
+header .div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 50%;
 }
 .nav-btn {
     height: 100%;
@@ -181,13 +187,14 @@ header {
     justify-content: center;
     margin-left: 100px;
 }
-.find-people input {
+.docs-display input {
     position: absolute;
-    top: 7px;
-    left: 22%;
-    width: 397px;
-    height: 50px;
+    top: 1vh;
+    left: 12vh;
+    width: 300px;
+    height: 8vh;
     border: none;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -241,9 +248,17 @@ header {
 .profile-wraper {
     position: absolute;
     left: 0;
-    top: 0;
-    height: 100vh;
+    top: 10vh;
+    height: 100%;
     width: 100vw;
+}
+.popup-btn {
+    position: fixed;
+    top: 1vh;
+    left: 1vh;
+    width: 6vh;
+    height: 6vh;
+    font-size: 5vh;
 }
 .popup-menu {
     display: flex;
