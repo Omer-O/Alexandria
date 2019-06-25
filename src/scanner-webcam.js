@@ -6,7 +6,14 @@ export class CameraFeed extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            constraints: { audio: false, video: { width: 400, height: 300 } }
+            constraints: {
+                audio: false,
+                video: {
+                    width: 1280,
+                    height: 720,
+                    facingMode: "user"
+                }
+            }
         };
         this.handleStartClick = this.handleStartClick.bind(this);
         this.takePicture = this.takePicture.bind(this);
@@ -44,7 +51,7 @@ export class CameraFeed extends Component {
 
     render() {
         return (
-            <div className="capture">
+            <div className="camera-container">
                 <Camera handleStartClick={this.handleStartClick} />
                 <canvas id="canvas" hidden />
                 <Photo />
