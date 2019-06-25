@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import { Photo } from "./photo";
+import { CapturedImage } from "./captured-image";
 import { Camera } from "./camera";
 
-export class CameraFeed extends Component {
+export class Scanner extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            constraints: { audio: false, video: { width: 400, height: 300 } }
+            constraints: {
+                audio: false,
+                video: { width: 1000, height: 1200 }
+            }
         };
         this.handleStartClick = this.handleStartClick.bind(this);
         this.takePicture = this.takePicture.bind(this);
@@ -44,10 +47,10 @@ export class CameraFeed extends Component {
 
     render() {
         return (
-            <div className="camera-container">
-                <Camera handleStartClick={this.handleStartClick} />
+            <div className="scanner-container">
                 <canvas id="canvas" hidden />
-                <Photo />
+                <CapturedImage />
+                <Camera handleStartClick={this.handleStartClick} />
             </div>
         );
     }

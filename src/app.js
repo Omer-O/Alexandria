@@ -9,7 +9,7 @@ import { Documents } from "./documents";
 import { WebcamCapture } from "./webcam";
 import { Home } from "./home";
 import { ProfileMenu } from "./profile-menu";
-import { CameraFeed } from "./scanner-webcam";
+import { Scanner } from "./scanner";
 
 export class App extends React.Component {
     constructor(props) {
@@ -87,7 +87,7 @@ export class App extends React.Component {
                         </button>
 
                         {this.state.scannerVisible && (
-                            <CameraFeed showScanner={this.showScanner} />
+                            <Scanner showScanner={this.showScanner} />
                         )}
                         <Route path={"/home"} render={() => <Home />} />
                     </div>
