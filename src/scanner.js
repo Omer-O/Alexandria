@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { CapturedImage } from "./captured-image";
 import { Camera } from "./camera";
+import axios from "./axios";
 
 export class Scanner extends Component {
     constructor(props) {
@@ -8,15 +9,7 @@ export class Scanner extends Component {
         this.state = {
             constraints: {
                 audio: false,
-<<<<<<< HEAD:src/scanner-webcam.js
-                video: {
-                    width: 1280,
-                    height: 720,
-                    facingMode: "user"
-                }
-=======
                 video: { width: 1000, height: 1200 }
->>>>>>> 22dc45eff61b335d7f1a54302009095c025ac6bf:src/scanner.js
             }
         };
         this.handleStartClick = this.handleStartClick.bind(this);
@@ -29,7 +22,7 @@ export class Scanner extends Component {
         const { width, height } = this.state.constraints.video;
         context.fillRect(0, 0, width, height);
 
-        const data = canvas.toDataURL("image/png");
+        const data = canvas.toDataURL("image/jpeg");
         photo.setAttribute("src", data);
     }
     handleStartClick(e) {
@@ -48,9 +41,21 @@ export class Scanner extends Component {
         canvas.height = height;
         context.drawImage(video, 0, 0, width, height);
 
-        const data = canvas.toDataURL("image/png");
+        const data = canvas.toDataURL("image/jpeg");
         console.log("this is data of takePicture:", data);
-        photo.setAttribute("src", data);
+        const formData = new FormData();
+        formData.append("src", data);
+        axios
+            .post("/store-document", formData)
+            .then(result => {
+                console.log("result of SCANNER:", result);
+            })
+            .catch(err => {
+                console.log(err);
+                this.setState({
+                    error: true
+                });
+            });
     }
 
     render() {

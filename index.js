@@ -133,26 +133,33 @@ app.post("/find-docs", (req, res) => {
         });
 });
 ///////////////////////////////////////////////////////////////////////////////
-app.post("/store-document", async (req, res) => {
-    console.log("*******store document*******");
-    const userId = req.session.userId;
-    const url = "./img/demo.jpg";
-    const text = req.body.text;
-    const title = "title";
-    const tags = "tags";
-    try {
-        const stored = await db.storeInDocuments(
-            userId,
-            imgurl,
-            text,
-            title,
-            tags
-        );
-        console.log("stored doc", stored);
-    } catch (e) {
-        console.log("error at stored doc", e);
+app.post(
+    "/store-document",
+    uploader.single("src"),
+    s3.upload,
+    async (req, res) => {
+        console.log(" req.body store document**** :", req.body);
+        console.log("*******store document*******");
+        let imageUrl = "https://s3.amazonaws.com/spicedling/" + req.body;
+        const userId = req.session.userId;
+        const url = req.body.url;
+        const text = req.body.text;
+        const title = "title";
+        const tags = "tags";
+        try {
+            const stored = await db.storeInDocuments(
+                userId,
+                imgurl,
+                text,
+                title,
+                tags
+            );
+            console.log("stored doc", stored);
+        } catch (e) {
+            console.log("error at stored doc", e);
+        }
     }
-});
+);
 
 /////////////////////////////////////registration login//////////////////////////////////////
 
