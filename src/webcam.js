@@ -24,7 +24,7 @@ export class WebcamCapture extends React.Component {
             <div className="camera">
                 <Webcam
                     audio={false}
-                    height={1600}
+                    height={1400}
                     width={900}
                     ref={this.elemRef}
                     screenshotFormat="image/jpeg"

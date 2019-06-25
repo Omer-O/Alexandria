@@ -6,7 +6,11 @@ export function Camera(props) {
     return (
         <div className="camera">
             <video id="video" />
-            <button id="startButton" onClick={props.handleStartClick}>
+            <button
+                id="startButton"
+                className="capture-btn"
+                onClick={props.handleStartClick}
+            >
                 <FontAwesomeIcon icon={faCircle} />
             </button>
         </div>
