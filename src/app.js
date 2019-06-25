@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import axios from "./axios";
 import { DocumentViewr } from "./document-viewr";
 import FindDocs from "./find-docs";
@@ -17,21 +18,23 @@ export class App extends React.Component {
         this.state = {
             scannerVisible: false
         };
+        this.hideScanner = this.hideScanner.bind(this);
         this.showScanner = this.showScanner.bind(this);
         // this.uploadImage = this.uploadImage.bind(this);
     }
 
     showScanner() {
-        console.log("click");
-        if (this.state.scannerVisible) {
-            this.setState({
-                scannerVisible: false
-            });
-        } else {
-            this.setState({
-                scannerVisible: true
-            });
-        }
+        this.setState({
+            scannerVisible: true
+        });
+        this.state.scannerVisible;
+        console.log("scanner visible", this.state.scannerVisible);
+    }
+    hideScanner() {
+        this.setState({
+            scannerVisible: false
+        });
+        console.log("scanner visible", this.state.scannerVisible);
     }
 
     // uploadImage(file) {
@@ -67,7 +70,7 @@ export class App extends React.Component {
                         <div />
                         <div>
                             <Link to="/home" className="nav-btn">
-                                Home
+                                <span>Home</span>
                             </Link>
 
                             <Link to="/profile" className="nav-btn img-icon">
@@ -82,15 +85,34 @@ export class App extends React.Component {
 
                     <div className="app-body">
                         <Find-docs />
-                        <button className="cam-btn" onClick={this.showScanner}>
-                            Scanner
-                        </button>
+                        {!this.state.scannerVisible && (
+                            <button
+                                className="cam-btn"
+                                onClick={this.showScanner}
+                            >
+                                <FontAwesomeIcon icon={faCamera} />
+                            </button>
+                        )}
 
                         {this.state.scannerVisible && (
                             <Scanner showScanner={this.showScanner} />
                         )}
                         <Route path={"/home"} render={() => <Home />} />
                     </div>
+                    <footer>
+                        <div className="footer-btn">
+                            <span>home</span>
+                        </div>
+                        <div className="footer-btn">
+                            <span>home</span>
+                        </div>
+
+                        <div className="footer-btn" onClick={this.hideScanner}>
+                            <span>back</span>
+                        </div>
+
+                        <ProfileMenu />
+                    </footer>
                 </div>
             </BrowserRouter>
         );

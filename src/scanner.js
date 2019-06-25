@@ -6,6 +6,7 @@ export class Scanner extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            cameraVisible: true,
             constraints: {
                 audio: false,
                 video: { width: 1000, height: 1200 }
@@ -13,6 +14,24 @@ export class Scanner extends Component {
         };
         this.handleStartClick = this.handleStartClick.bind(this);
         this.takePicture = this.takePicture.bind(this);
+
+        this.hideCamera = this.hideCamera.bind(this);
+        this.showCamera = this.showCamera.bind(this);
+        // this.uploadImage = this.uploadImage.bind(this);
+    }
+
+    showCamera() {
+        this.setState({
+            cameraVisible: true
+        });
+        this.state.cameraVisible;
+        console.log("Camera visible", this.state.cameraVisible);
+    }
+    hideCamera() {
+        this.setState({
+            cameraVisible: false
+        });
+        console.log("Camera visible", this.state.cameraVisible);
     }
     componentDidMount() {
         const canvas = document.querySelector("canvas");
@@ -43,14 +62,19 @@ export class Scanner extends Component {
         const data = canvas.toDataURL("image/png");
         console.log("this is data of takePicture:", data);
         photo.setAttribute("src", data);
+        this.hideCamera();
     }
 
     render() {
         return (
             <div className="scanner-container">
                 <canvas id="canvas" hidden />
-                <CapturedImage />
-                <Camera handleStartClick={this.handleStartClick} />
+                <CapturedImage cameraVisible={this.state.cameraVisible} />
+                {this.state.cameraVisible && (
+                    <div>
+                        <Camera handleStartClick={this.handleStartClick} />
+                    </div>
+                )}
             </div>
         );
     }
