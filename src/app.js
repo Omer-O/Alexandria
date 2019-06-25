@@ -22,6 +22,7 @@ export class App extends React.Component {
     }
 
     showScanner() {
+        console.log("click");
         if (this.state.scannerVisible) {
             this.setState({
                 scannerVisible: false
@@ -81,7 +82,7 @@ export class App extends React.Component {
 
                     <div className="app-body">
                         <Find-docs />
-                        <button className="cam-btn" onClick={this.showscanner}>
+                        <button className="cam-btn" onClick={this.showScanner}>
                             Scanner
                         </button>
 

@@ -44,7 +44,7 @@ export class CameraFeed extends Component {
 
     render() {
         return (
-            <div className="capture">
+            <div className="camera-container">
                 <Camera handleStartClick={this.handleStartClick} />
                 <canvas id="canvas" hidden />
                 <Photo />
