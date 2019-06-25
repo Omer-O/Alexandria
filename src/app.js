@@ -17,12 +17,11 @@ export class App extends React.Component {
         this.state = {
             scannerVisible: false
         };
-        this.uploaded = this.uploaded.bind(this);
-        this.showscanner = this.showscanner.bind(this);
+        this.showScanner = this.showScanner.bind(this);
         // this.uploadImage = this.uploadImage.bind(this);
     }
 
-    showscanner() {
+    showScanner() {
         if (this.state.scannerVisible) {
             this.setState({
                 scannerVisible: false
