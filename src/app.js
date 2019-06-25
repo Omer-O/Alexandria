@@ -10,7 +10,6 @@ import { WebcamCapture } from "./webcam";
 import { Home } from "./home";
 import { ProfileMenu } from "./profile-menu";
 import { CameraFeed } from "./scanner-webcam";
-import { ProfileMenu } from "./profile-menu";
 
 export class App extends React.Component {
     constructor(props) {
