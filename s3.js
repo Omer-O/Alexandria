@@ -16,7 +16,17 @@ const client = knox.createClient({
 });
 
 // if you're using David's credentials, the bucket is "spicedling"
-
+module.exports.deleteImage = function deleteImage(url) {
+    let fileName = url.replace("https://s3.amazonaws.com/spicedling/", "");
+    // console.log("fileName", fileName);
+    client
+        .del(fileName)
+        .on("response", res => {
+            console.log("status code", res.statusCode);
+            console.log("header", res.headers);
+        })
+        .end();
+};
 module.exports.upload = function(req, res, next) {
     if (!req.file) {
         return res.sendStatus(500);

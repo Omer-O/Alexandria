@@ -10,12 +10,14 @@ export class Test extends React.Component {
     }
 
     speak(e) {
+        let voice;
         const speech = new Speech();
         speech.init; // will throw an exception if not browser supported
         if (speech.hasBrowserSupport()) {
             // returns a boolean
             console.log("speech synthesis supported");
         }
+        const text = this.props.txt;
         speech
             .init()
             .then(data => {
@@ -25,50 +27,53 @@ export class Test extends React.Component {
                     data.voices[5]
                 );
                 voice = data.voices[5].name;
+                speech.setVoice(voice);
             })
             .catch(e => {
                 console.error("An error occured while initializing : ", e);
             });
         const resumeButton = document.getElementById("resume");
         const pauseButton = document.getElementById("pause");
-        //        speech.setVoice(voice);
 
-        speech
-            .speak({
-                text: this.props.txt,
-                queue: false, // current speech will be interrupted,
-                listeners: {
-                    onstart: () => {
-                        console.log("Start utterance");
-                    },
-                    onend: () => {
-                        console.log("End utterance");
-                    },
-                    onresume: () => {
-                        console.log("Resume utterance");
-                    },
-                    onboundary: event => {
-                        console.log(
-                            event.name +
-                                " boundary reached after " +
-                                event.elapsedTime +
-                                " milliseconds."
-                        );
+        setTimeout(speak, 1000);
+        function speak() {
+            speech
+                .speak({
+                    text: text,
+                    queue: false, // current speech will be interrupted,
+                    listeners: {
+                        onstart: () => {
+                            console.log("Start utterance");
+                        },
+                        onend: () => {
+                            console.log("End utterance");
+                        },
+                        onresume: () => {
+                            console.log("Resume utterance");
+                        },
+                        onboundary: event => {
+                            console.log(
+                                event.name +
+                                    " boundary reached after " +
+                                    event.elapsedTime +
+                                    " milliseconds."
+                            );
+                        }
                     }
-                }
-            })
-            .then(() => {
-                console.log("Success !");
-            })
-            .catch(e => {
-                console.error("An error occurred :", e);
+                })
+                .then(() => {
+                    console.log("Success !");
+                })
+                .catch(e => {
+                    console.error("An error occurred :", e);
+                });
+            pauseButton.addEventListener("click", () => {
+                speech.pause();
             });
-        pauseButton.addEventListener("click", () => {
-            speech.pause();
-        });
-        resumeButton.addEventListener("click", () => {
-            speech.resume();
-        });
+            resumeButton.addEventListener("click", () => {
+                speech.resume();
+            });
+        }
     }
 
     render() {
