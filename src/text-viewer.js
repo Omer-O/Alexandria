@@ -1,6 +1,7 @@
 import React from "react";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Test } from "./test";
 
 export class TextViewer extends React.Component {
     constructor(props) {
@@ -25,6 +26,7 @@ export class TextViewer extends React.Component {
                     <div className="text-viewer">
                         <p>{this.props.txt}</p>
                     </div>
+                    <Test txt={this.props.txt} />
                 </div>
                 <footer>
                     <FontAwesomeIcon
