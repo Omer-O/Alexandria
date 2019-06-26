@@ -83,32 +83,33 @@ export class Scanner extends Component {
     }
     render() {
         return (
-            <div className="scanner-container wrapper">
+            <div className="wrapper">
                 <canvas id="canvas" hidden />
                 <CapturedImage cameraVisible={this.state.cameraVisible} />
-
-                <button
-                    className="save-btn"
-                    type="submit"
-                    name="button"
-                    onClick={e => this.savePicture(e)}
-                >
-                    SAVE
-                </button>
-                <button
-                    className="back-btn"
-                    type="submit"
-                    name="button"
-                    onClick={this.showCamera}
-                >
-                    BACK
-                </button>
-                <div>
-                    <RotateImage
-                        onClick={this.props.rotateleft}
-                        onClick={this.props.rotate}
-                    />
-                </div>
+                <footer>
+                    <button
+                        className="save-img-btn"
+                        type="submit"
+                        name="button"
+                        onClick={e => this.savePicture(e)}
+                    >
+                        SAVE
+                    </button>
+                    <div>
+                        <RotateImage
+                            onClick={this.props.rotateleft}
+                            onClick={this.props.rotate}
+                        />
+                    </div>
+                    <button
+                        className="back-btn"
+                        type="submit"
+                        name="button"
+                        onClick={this.showCamera}
+                    >
+                        BACK
+                    </button>
+                </footer>
                 {this.state.cameraVisible && (
                     <div>
                         <Camera handleStartClick={this.handleStartClick} />
