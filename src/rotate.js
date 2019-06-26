@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CapturedImage } from "./captured-image";
 
 export class RotateImage extends React.Component {
     constructor(props) {
@@ -35,6 +36,10 @@ export class RotateImage extends React.Component {
         return (
             <div>
                 <input onClick={this.rotateleft} type="button" value="left" />
+                <img
+                    style={{ transform: `rotate(${rotation}deg)` }}
+                    src={this.props.CapturedImage}
+                />
                 <input onClick={this.rotate} type="button" value="right" />
             </div>
         );
