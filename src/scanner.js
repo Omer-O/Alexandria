@@ -84,20 +84,11 @@ export class Scanner extends Component {
         return (
             <div className="wrapper">
                 <canvas id="canvas" hidden />
-                <CapturedImage cameraVisible={this.state.cameraVisible} />
-                <footer>
-                    <button
-                        className="save-img-btn"
-                        type="submit"
-                        name="button"
-                        onClick={e => this.savePicture(e)}
-                    >
-                        SAVE
-                    </button>
-                    <button className="back-btn" onClick={this.showCamera}>
-                        BACK
-                    </button>
-                </footer>
+                <CapturedImage
+                    cameraVisible={this.state.cameraVisible}
+                    showCamera={this.showCamera}
+                    savePicture={this.savePicture}
+                />
                 {this.state.cameraVisible && (
                     <div>
                         <Camera handleStartClick={this.handleStartClick} />

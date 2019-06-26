@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { WebcamCapture } from "./webcam";
+import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -37,7 +39,7 @@ export class CapturedImage extends React.Component {
 
         return (
             <div className="wrapper">
-                <div>
+                <div className="captured-img-container">
                     {this.props.cameraVisible && <WebcamCapture />}
                     <img
                         id="photo"
@@ -46,6 +48,8 @@ export class CapturedImage extends React.Component {
                     />
                 </div>
                 <footer>
+                    <button onClick={this.props.showCamera}>BACK</button>
+
                     <button onClick={this.rotateleft} type="button">
                         left
                     </button>
