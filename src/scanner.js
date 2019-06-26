@@ -103,10 +103,12 @@ export class Scanner extends Component {
                 >
                     BACK
                 </button>
-                <RotateImage
-                    onClick={this.props.rotateleft}
-                    onClick={this.props.rotate}
-                />
+                <div>
+                    <RotateImage
+                        onClick={this.props.rotateleft}
+                        onClick={this.props.rotate}
+                    />
+                </div>
                 {this.state.cameraVisible && (
                     <div>
                         <Camera handleStartClick={this.handleStartClick} />
