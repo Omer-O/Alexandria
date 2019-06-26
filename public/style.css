@@ -151,6 +151,7 @@ footer {
 .mid-section {
     height: 80vh;
     width: 100vw;
+    overflow: scroll;
 }
 
 .nav-btn {
@@ -161,11 +162,7 @@ footer {
     height: 100%;
     font-size: 40px;
 }
-.app-body {
-    background-color: lightgrey;
-    height: 90vh;
-    overflow: scroll;
-}
+
 .app-container {
     height: 100vh;
     width: 100vw;

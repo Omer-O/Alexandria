@@ -83,9 +83,10 @@ export class Scanner extends Component {
     }
     render() {
         return (
-            <div className="scanner-container">
+            <div className="scanner-container wrapper">
                 <canvas id="canvas" hidden />
                 <CapturedImage cameraVisible={this.state.cameraVisible} />
+
                 <button
                     className="save-btn"
                     type="submit"

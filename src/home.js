@@ -4,6 +4,7 @@ import axios from "./axios";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 export function Home(props) {
     const [query, setQuery] = useState("last10");
@@ -29,22 +30,14 @@ export function Home(props) {
         },
         [query]
     );
-    // let image = `url("${coverImgurl}")`;
-    // let backgroundImg = {
-    // 	backgroundImage: `url("${coverImgurl}")`,
-    // 	backgroundSize: "cover",
-    // 	//            backgroundRepeat: "no-repeat",
-    // 	height: "300px",
-    // 	width: "100%",
-    // 	borderBottom: "solid #d4dce9 1px",
-    // 	borderLeft: "solid #d4dce9 1px",
-    // 	borderRight: "solid #d4dce9 1px",
-    // 	color: "white"
-    // };
+
     console.log("searchVisible:", props.searchVisible);
 
     return (
         <div className="docs-display">
+            <Link to="/camera" className="cam-btn">
+                <FontAwesomeIcon icon={faCamera} />
+            </Link>
             {props.searchVisible && (
                 <div className="search-bar">
                     <span onClick={props.hideSearchBar}>

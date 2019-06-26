@@ -32,6 +32,7 @@ export class ImgViewer extends React.Component {
                     </div>
                 </div>
                 <footer>
+                    <div className="nav-btn">rotate</div>
                     {this.props.props.txt ? (
                         <div
                             className="nav-btn"
