@@ -15,7 +15,6 @@ export class Scanner extends Component {
         };
         this.handleStartClick = this.handleStartClick.bind(this);
         this.takePicture = this.takePicture.bind(this);
-
         this.hideCamera = this.hideCamera.bind(this);
         this.showCamera = this.showCamera.bind(this);
         // this.uploadImage = this.uploadImage.bind(this);
@@ -58,6 +57,7 @@ export class Scanner extends Component {
         canvas.width = width;
         canvas.height = height;
         context.drawImage(video, 0, 0, width, height);
+
         const data = canvas.toDataURL("image/jpeg");
         photo.setAttribute("src", data);
         this.hideCamera();
@@ -76,7 +76,6 @@ export class Scanner extends Component {
                 });
         });
     }
-
     render() {
         return (
             <div className="scanner-container">

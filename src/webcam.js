@@ -7,12 +7,6 @@ export class WebcamCapture extends React.Component {
         this.state = {};
         this.elemRef = React.createRef();
     } //constructor close.
-    // onTakePhoto(dataUri) {}
-    // capture() {
-    //     const imageSrc = this.onTakePhoto(dataUri);
-    //     console.log("capture:", imageSrc);
-    // }
-
     render() {
         const videoConstraints = {
             width: 480,
