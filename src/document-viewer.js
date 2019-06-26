@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "./axios";
+import { Ocr } from "./ocr";
+import { getDocs } from "./actions";
 import { Link } from "react-router-dom";
-import { TesseractWorker } from "tesseract.js";
-const worker = new TesseractWorker();
 
 export class DocumentViewer extends React.Component {
     constructor(props) {
@@ -10,53 +10,29 @@ export class DocumentViewer extends React.Component {
         this.state = {};
     }
     componentDidMount() {
-        const myImage = "./img/demo.jpg";
-        worker
-            .recognize(myImage)
-            .progress(progress => {
-                console.log("progress", progress);
-            })
-            .then(result => {
-                console.log("result", result);
-                this.setState({
-                    text: result.text
-                });
-                console.log("state.text", this.state.text == result.text);
-            });
-    }
-    handleChange(event) {
-        this.setState({});
-    }
-    submit() {
-        let text = this.state.text;
-        axios
-            .post("/store-document", {
-                text: text
-            })
-            .then(() => {
-                console.log("this.state.text", text);
-            });
+        const id = this.props.match.params.id;
+        axios.get("/document/" + id).then(({ data }) => {
+            //console.log("request for same user");
+            if (data.success == false) {
+                this.props.history.push("/");
+            } else {
+                //        console.log("data at other profile", data);
+                this.setState(data);
+                console.log("this.state :", this.state);
+            }
+        });
     }
     render() {
         return (
-            <div className="page-container">
-                <div className="x-btn" onClick={this.props.hideUploader}>
-                    X
-                </div>
-                <div className="demo-img">
-                    <img src="./img/demo.jpg" />
-                </div>
-                <div className="display-text">
-                    <p>{this.state.text}</p>
-                </div>
-                <button
-                    className="save-btn"
-                    onClick={e => {
-                        this.submit();
-                    }}
-                >
-                    Save doc
-                </button>
+            <div className="document-viewer">
+                <h3>{this.state.title}</h3>
+                <img src={this.state.img_url} alt="sjkfsnd" id="read" />
+                {this.state.txt && (
+                    <div className="text-viewer">
+                        <p>{this.state.txt}</p>
+                    </div>
+                )}
+                <Ocr img_url={this.state.img_url} docId={this.state.id} />
             </div>
         );
     }
