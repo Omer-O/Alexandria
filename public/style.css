@@ -128,7 +128,7 @@ form div {
 
 /*--------------------header-------------------------- */
 .wrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -141,12 +141,18 @@ footer {
     background-color: #14357a;
     border: solid black 1px;
     height: 10vh;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     color: white;
     padding-left: 10vw;
+}
+footer {
+    position: fixed;
+
+    bottom: 0;
 }
 .mid-section {
     height: 80vh;
@@ -168,6 +174,9 @@ footer {
     width: 100vw;
 }
 .cam-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 150px;
     width: 150px;
     background-color: black;
@@ -179,6 +188,10 @@ footer {
     bottom: 100px;
     right: 50px;
     z-index: 10;
+}
+.save-img-btn {
+    background-color: white;
+    color: black;
 }
 .icon {
     color: white;
