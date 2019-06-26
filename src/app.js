@@ -15,6 +15,7 @@ import { WebcamCapture } from "./webcam";
 import { Home } from "./home";
 import { ProfileMenu } from "./profile-menu";
 import { Scanner } from "./scanner";
+import { DocumentViewer } from "./document-viewer";
 
 export class App extends React.Component {
     constructor(props) {
@@ -131,6 +132,16 @@ export class App extends React.Component {
                                 <Home
                                     searchVisible={this.state.searchVisible}
                                     hideSearchBar={this.hideSearchBar}
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/doc/:id"
+                            render={props => (
+                                <DocumentViewer
+                                    key={props.match.url}
+                                    match={props.match}
+                                    history={props.history}
                                 />
                             )}
                         />

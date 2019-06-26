@@ -1,62 +1,80 @@
 import React from "react";
 import axios from "./axios";
+import { Ocr } from "./ocr";
+import { TextViewer } from "./text-viewer";
+import { getDocs } from "./actions";
 import { Link } from "react-router-dom";
-import { TesseractWorker } from "tesseract.js";
-const worker = new TesseractWorker();
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class DocumentViewer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            TextVisible: false
+        };
+        this.hideText = this.hideText.bind(this);
     }
     componentDidMount() {
-        const myImage = "./img/demo.jpg";
-        worker
-            .recognize(myImage)
-            .progress(progress => {
-                console.log("progress", progress);
-            })
-            .then(result => {
-                console.log("result", result);
-                this.setState({
-                    text: result.text
-                });
-                console.log("state.text", this.state.text == result.text);
-            });
+        const id = this.props.match.params.id;
+        axios.get("/document/" + id).then(({ data }) => {
+            //console.log("request for same user");
+            if (data.success == false) {
+                this.props.history.push("/");
+            } else {
+                //        console.log("data at other profile", data);
+                this.setState(data);
+                console.log("this.state :", this.state);
+            }
+        });
     }
-    handleChange(event) {
-        this.setState({});
+    showText() {
+        this.setState({
+            TextVisible: true
+        });
+        this.state.TextVisible;
     }
-    submit() {
-        let text = this.state.text;
-        axios
-            .post("/store-document", {
-                text: text
-            })
-            .then(() => {
-                console.log("this.state.text", text);
-            });
+    hideText() {
+        this.setState({
+            TextVisible: false
+        });
+        console.log("scanner visible", this.state.scannerVisible);
     }
     render() {
         return (
-            <div className="page-container">
-                <div className="x-btn" onClick={this.props.hideUploader}>
-                    X
-                </div>
-                <div className="demo-img">
-                    <img src="./img/demo.jpg" />
-                </div>
-                <div className="display-text">
-                    <p>{this.state.text}</p>
-                </div>
-                <button
-                    className="save-btn"
-                    onClick={e => {
-                        this.submit();
-                    }}
-                >
-                    Save doc
-                </button>
+            <div className="document-viewer full-screen">
+                {this.state.TextVisible ? (
+                    <TextViewer txt={this.state.txt} hide={this.hideText} />
+                ) : (
+                    <div className="img-viewer full-screen">
+                        <header>
+                            <FontAwesomeIcon
+                                icon={faUndo}
+                                className="nav-btn"
+                            />
+
+                            <div className="nav-btn">fjlksdf</div>
+                        </header>
+                        <h3>{this.state.title}</h3>
+                        <img src={this.state.img_url} alt="sjkfsnd" id="read" />
+
+                        {this.state.txt ? (
+                            <button
+                                className="save-btn"
+                                onClick={e => {
+                                    this.showText();
+                                }}
+                            >
+                                View Text
+                            </button>
+                        ) : (
+                            <Ocr
+                                img_url={this.state.img_url}
+                                docId={this.state.id}
+                            />
+                        )}
+                    </div>
+                )}
             </div>
         );
     }

@@ -19,12 +19,12 @@ module.exports.storeInDocuments = function(userId, img_url, text, title, tags) {
     );
 };
 
-module.exports.updateDoc = function(docId, title) {
+module.exports.updateDoc = function(docId, text, title, tags) {
     return db.query(
         `UPDATE documents
-			SET title = $2
-			WHERE id = $1`,
-        [docId, title]
+            SET txt = $2, title = $3, tags = $4
+            WHERE id=$1`,
+        [docId || null, text, title, tags]
     );
 };
 
@@ -59,7 +59,7 @@ module.exports.updateUser = function(
     return db.query(
         `UPDATE users
             SET first = $2, last = $3, bio = $4, url=$5, email=$6, password=$7
-            WHERE id=$1;`,
+            WHERE id=$1`,
         [userId, first, last, bio, url, email, hashedPass]
     );
 };
@@ -68,6 +68,9 @@ module.exports.updateUser = function(
 
 module.exports.getUserDataById = function(id) {
     return db.query(`SELECT * FROM users WHERE id = $1`, [id]);
+};
+module.exports.getdocumentById = function(id) {
+    return db.query(`SELECT * FROM documents WHERE id = $1`, [id]);
 };
 
 module.exports.getUserDataByEmail = function(email) {

@@ -116,6 +116,20 @@ app.get("/user", (req, res) => {
             });
     }
 });
+///////////////////////GET DOCUMENT/////////////////////
+
+app.get("/document/:id", async (req, res) => {
+    console.log("*******GET DOCUMENT DATA*******");
+    const documentId = req.params.id;
+    try {
+        const docData = await db.getdocumentById(documentId);
+        console.log("doc data: ", docData.rows[0]);
+
+        res.json(docData.rows[0]);
+    } catch (err) {
+        console.log("GET DOC DATA ERROR: ", err);
+    }
+});
 ////////////////////////////FIND DOCS//////////////////////////
 
 app.post("/find-docs", (req, res) => {
@@ -132,7 +146,7 @@ app.post("/find-docs", (req, res) => {
             console.log("FIND DOCS ERROR", err);
         });
 });
-///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////store-document/////////////////////////////////
 app.post(
     "/store-document",
     uploader.single("file"),
@@ -160,6 +174,23 @@ app.post(
         }
     }
 );
+/////////////////////////////////update-xtt/////////////////////////////////
+app.post("/update-text", async (req, res) => {
+    console.log("*******Update text*******");
+    console.log("req.body", req.body);
+    const docId = req.body.docId;
+    const text = req.body.text;
+    const title = "Driving license"; //req.body.title;
+    const tags = "tags"; //req.body.tags;
+    console.log("*******Update text*******");
+
+    try {
+        const newData = await db.updateDoc(docId, text);
+        console.log("stored doc", newData);
+    } catch (e) {
+        console.log("error at stored doc", e);
+    }
+});
 
 /////////////////////////////////////registration login//////////////////////////////////////
 

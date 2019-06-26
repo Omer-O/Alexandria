@@ -135,8 +135,10 @@ header {
     height: 10vh;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    color: white;
+    padding-left: 10vw;
 }
 
 .nav-btn {
@@ -146,7 +148,6 @@ header {
     width: 15vw;
     height: 100%;
     font-size: 40px;
-    font-size: white;
 }
 .app-body {
     background-color: lightgrey;
@@ -282,7 +283,9 @@ header {
     height: 6vh;
     font-size: 5vh;
 }
-
+.document-viewer {
+    position: absolute;
+}
 .popup-menu {
     display: flex;
     flex-direction: row;
@@ -335,4 +338,21 @@ header {
     border-radius: 50%;
     font-size: 80px;
     position: absolute;
+}
+.text-viewer {
+    background-color: white;
+    position: absolute;
+
+    border: solid grey 1px;
+    border-radius: 20px;
+    overflow: scroll;
+    z-index: 100;
+}
+.full-screen {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
