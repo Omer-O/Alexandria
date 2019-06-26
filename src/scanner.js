@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { CapturedImage } from "./captured-image";
 import { Camera } from "./camera";
+import { RotateImage } from "./rotate";
 import axios from "./axios";
 
 export class Scanner extends Component {
@@ -84,7 +85,6 @@ export class Scanner extends Component {
         return (
             <div className="wrapper">
                 <canvas id="canvas" hidden />
-
                 <CapturedImage cameraVisible={this.state.cameraVisible} />
                 <footer>
                     <button
@@ -95,7 +95,14 @@ export class Scanner extends Component {
                     >
                         SAVE
                     </button>
+                    <div>
+                        <RotateImage
+                            onClick={this.props.rotateleft}
+                            onClick={this.props.rotate}
+                        />
+                    </div>
                 </footer>
+
                 {this.state.cameraVisible && (
                     <div>
                         <Camera handleStartClick={this.handleStartClick} />
