@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { CapturedImage } from "./captured-image";
 import { Camera } from "./camera";
-import { RotateImage } from "./rotate";
 import axios from "./axios";
 
 export class Scanner extends Component {
@@ -18,6 +17,8 @@ export class Scanner extends Component {
         this.takePicture = this.takePicture.bind(this);
         this.hideCamera = this.hideCamera.bind(this);
         this.showCamera = this.showCamera.bind(this);
+        this.takePicture = this.takePicture.bind(this);
+
         // this.uploadImage = this.uploadImage.bind(this);
     }
 
@@ -84,24 +85,15 @@ export class Scanner extends Component {
     render() {
         return (
             <div className="wrapper">
-                <canvas id="canvas" hidden />
-                <CapturedImage cameraVisible={this.state.cameraVisible} />
-                <footer>
-                    <button
-                        className="save-img-btn"
-                        type="submit"
-                        name="button"
-                        onClick={e => this.savePicture(e)}
-                    >
-                        SAVE
-                    </button>
-                    <div>
-                        <RotateImage
-                            onClick={this.props.rotateleft}
-                            onClick={this.props.rotate}
-                        />
-                    </div>
-                </footer>
+                <canvas
+                    id="canvas"
+                    style={{ transform: "rotate(90deg)" }}
+                    hidden
+                />
+                <CapturedImage
+                    cameraVisible={this.state.cameraVisible}
+                    savePicture={this.savePicture}
+                />
 
                 {this.state.cameraVisible && (
                     <div>
