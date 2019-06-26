@@ -43,6 +43,7 @@ export class Scanner extends Component {
         const data = canvas.toDataURL("image/jpeg");
         photo.setAttribute("src", data);
     }
+
     handleStartClick(e) {
         e.preventDefault();
         this.takePicture();
@@ -61,7 +62,10 @@ export class Scanner extends Component {
         const data = canvas.toDataURL("image/jpeg");
         photo.setAttribute("src", data);
         this.hideCamera();
-
+    }
+    savePicture(e) {
+        e.preventDefault();
+        console.log("savePicture clicked");
         canvas.toBlob(function(blob) {
             console.log("this is data of takePicture:", blob);
             const formData = new FormData();
@@ -81,6 +85,14 @@ export class Scanner extends Component {
             <div className="scanner-container">
                 <canvas id="canvas" hidden />
                 <CapturedImage cameraVisible={this.state.cameraVisible} />
+                <button
+                    className="save-btn"
+                    type="submit"
+                    name="button"
+                    onClick={e => this.savePicture(e)}
+                >
+                    SAVE
+                </button>
                 {this.state.cameraVisible && (
                     <div>
                         <Camera handleStartClick={this.handleStartClick} />
