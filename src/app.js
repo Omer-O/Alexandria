@@ -84,7 +84,7 @@ export class App extends React.Component {
         }
         return (
             <BrowserRouter>
-                <div className="app-container">
+                <div className="wrapper">
                     <header>
                         <div className="nav-btn" />
                         <div className="nav-btn icon" onClick={this.showSearch}>
@@ -104,26 +104,8 @@ export class App extends React.Component {
                         <ProfileMenu />
                     </header>
 
-                    <div className="app-body">
-                        <Find-docs />
-                        {!this.state.scannerVisible ? (
-                            <button
-                                className="cam-btn"
-                                onClick={this.showScanner}
-                            >
-                                <FontAwesomeIcon icon={faCamera} />
-                            </button>
-                        ) : (
-                            <button
-                                className="cam-btn"
-                                onClick={this.hideScanner}
-                            >
-                                <FontAwesomeIcon icon={faUndo} />
-                            </button>
-                        )}
-                        {this.state.scannerVisible && (
-                            <Scanner showScanner={this.showScanner} />
-                        )}
+                    <div className="mid-section">
+                        <Route path="/camera" component={Scanner} />
 
                         <Route path="/crop" component={ImageCrop} />
                         <Route
