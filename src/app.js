@@ -5,7 +5,8 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
-
+ImageCrop;
+import { ImageCrop } from "./crop";
 import axios from "./axios";
 import { DocumentViewr } from "./document-viewer";
 import FindDocs from "./find-docs";
@@ -122,6 +123,8 @@ export class App extends React.Component {
                         {this.state.scannerVisible && (
                             <Scanner showScanner={this.showScanner} />
                         )}
+
+                        <Route path="/crop" component={ImageCrop} />
                         <Route
                             path={"/home"}
                             render={() => (
