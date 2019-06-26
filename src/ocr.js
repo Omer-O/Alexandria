@@ -31,7 +31,7 @@ export class Ocr extends React.Component {
     }
     readDocument(img) {
         worker
-            .recognize("/img/demo.jpg")
+            .recognize(this.props.img_url)
             .progress(progress => {
                 console.log("progress", progress);
             })
