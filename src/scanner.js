@@ -86,8 +86,10 @@ export class Scanner extends Component {
         return (
             <div className="wrapper">
                 <canvas id="canvas" hidden />
+                <div />
                 <CapturedImage
                     cameraVisible={this.state.cameraVisible}
+                    showCamera={this.showCamera}
                     savePicture={this.savePicture}
                 />
 
