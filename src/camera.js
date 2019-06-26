@@ -6,6 +6,7 @@ export function Camera(props) {
     return (
         <div className="camera">
             <video id="video" />
+            //camera live stream
             <button
                 id="startButton"
                 className="capture-btn"

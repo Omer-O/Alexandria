@@ -3,8 +3,11 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
+
 import axios from "./axios";
-import { DocumentViewr } from "./document-viewr";
+import { DocumentViewr } from "./document-viewer";
 import FindDocs from "./find-docs";
 import { Documents } from "./documents";
 import { WebcamCapture } from "./webcam";
@@ -16,10 +19,14 @@ export class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            scannerVisible: false
+            scannerVisible: false,
+            searchVisible: false
         };
         this.hideScanner = this.hideScanner.bind(this);
         this.showScanner = this.showScanner.bind(this);
+        this.showSearch = this.showSearch.bind(this);
+        this.hideSearchBar = this.hideSearchBar.bind(this);
+
         // this.uploadImage = this.uploadImage.bind(this);
     }
 
@@ -28,11 +35,21 @@ export class App extends React.Component {
             scannerVisible: true
         });
         this.state.scannerVisible;
-        console.log("scanner visible", this.state.scannerVisible);
     }
     hideScanner() {
         this.setState({
             scannerVisible: false
+        });
+    }
+    showSearch() {
+        this.setState({
+            searchVisible: true
+        });
+        this.state.scannerVisible;
+    }
+    hideSearchBar() {
+        this.setState({
+            searchVisible: false
         });
         console.log("scanner visible", this.state.scannerVisible);
     }
@@ -67,52 +84,54 @@ export class App extends React.Component {
             <BrowserRouter>
                 <div className="app-container">
                     <header>
-                        <div />
+                        <div className="nav-btn" />
+                        <div className="nav-btn icon" onClick={this.showSearch}>
+                            <FontAwesomeIcon icon={faSearch} />
+                        </div>
                         <div>
                             <Link to="/home" className="nav-btn">
-                                <span>Home</span>
+                                Home
                             </Link>
+                        </div>
 
-                            <Link to="/profile" className="nav-btn img-icon">
-                                find docs
-                            </Link>
+                        <div className="nav-btn">
                             <a href="/logout" className="nav-btn">
                                 <FontAwesomeIcon icon={faSignOutAlt} />
                             </a>
-                            <ProfileMenu />
                         </div>
+                        <ProfileMenu />
                     </header>
 
                     <div className="app-body">
                         <Find-docs />
-                        {!this.state.scannerVisible && (
+                        {!this.state.scannerVisible ? (
                             <button
                                 className="cam-btn"
                                 onClick={this.showScanner}
                             >
                                 <FontAwesomeIcon icon={faCamera} />
                             </button>
+                        ) : (
+                            <button
+                                className="cam-btn"
+                                onClick={this.hideScanner}
+                            >
+                                <FontAwesomeIcon icon={faUndo} />
+                            </button>
                         )}
-
                         {this.state.scannerVisible && (
                             <Scanner showScanner={this.showScanner} />
                         )}
-                        <Route path={"/home"} render={() => <Home />} />
+                        <Route
+                            path={"/home"}
+                            render={() => (
+                                <Home
+                                    searchVisible={this.state.searchVisible}
+                                    hideSearchBar={this.hideSearchBar}
+                                />
+                            )}
+                        />
                     </div>
-                    <footer>
-                        <div className="footer-btn">
-                            <span>home</span>
-                        </div>
-                        <div className="footer-btn">
-                            <span>home</span>
-                        </div>
-
-                        <div className="footer-btn" onClick={this.hideScanner}>
-                            <span>back</span>
-                        </div>
-
-                        <ProfileMenu />
-                    </footer>
                 </div>
             </BrowserRouter>
         );

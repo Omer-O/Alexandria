@@ -12,6 +12,7 @@ body {
     background: #f2f3f5;
     font-family: Calluna, Arial, sans-serif;
     min-height: 1000px;
+    font-size: 3vh;
 }
 button {
     height: 100px;
@@ -134,30 +135,27 @@ header {
     height: 10vh;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: space;
-}
-header .div {
-    display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
-
-    width: 50%;
 }
+
 .nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15vw;
     height: 100%;
-    padding: 20px;
     font-size: 40px;
     font-size: white;
 }
 .app-body {
     background-color: lightgrey;
-    height: 70vh;
+    height: 90vh;
+    overflow: scroll;
 }
-.page-container {
-    height: 100%;
-    width: 100%;
-    padding: 100px;
+.app-container {
+    height: 100vh;
+    width: 100vw;
 }
 .cam-btn {
     height: 150px;
@@ -168,8 +166,12 @@ header .div {
     border-radius: 50%;
     font-size: 80px;
     position: absolute;
-    bottom: 400px;
+    bottom: 100px;
     right: 50px;
+    z-index: 10;
+}
+.icon {
+    color: white;
 }
 .demo-img {
     display: flex;
@@ -187,90 +189,80 @@ header .div {
     width: 90%;
     padding: 50px;
 }
-/*--------------------bottom menue-------------------------- */
 
-footer {
-    font-weight: bold;
-    background-color: #14357a;
-    border: solid black 1px;
-    height: 20vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-}
-footer div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-    height: 100%;
-    text-align: center;
-    font-size: 40px;
-    color: white;
-}
 /*--------------------home-------------------------- */
 .docs-display {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 100px;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
 }
-.docs-display input {
+.search-bar {
+    height: 10vh;
+    align-content: stretch;
+    background-color: white;
     position: absolute;
-    top: 1vh;
-    left: 12vh;
-    width: 300px;
-    height: 8vh;
-    border: none;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.find-main {
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: row;
+    border-bottom: solid grey 2px;
+    border-top: solid grey 1px;
 }
-
-.filter {
-    color: #4b4f56;
-    font-size: 18px;
-    margin-bottom: 20px;
-    padding: 20px;
-    width: 30%;
+.search-bar input {
+    border: none;
+    width: 80vw;
+    z-index: 10;
+    font-size: 4vh;
+}
+.search-bar span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
 }
 .results {
-    margin-top: 10px;
-    width: 620px;
-    border: 1px solid dark-grey;
-    border-radius: 5px;
+    width: 98vw;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 0.3em;
+    grid-column-gap: 0.3em;
 }
 .search-result {
+    display: inline-block;
+    position: relative;
+    height: 22vh;
+    width: 29vw;
     background: white;
-    height: 7vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px 30px 20px 20px;
     color: #385898;
-    margin-bottom: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 10px;
 }
+
 .no-results {
     padding: 20px;
+    width: 100vw;
 }
-.results h3:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
+
 .search-result img {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     margin-right: 50px;
-    border-radius: 100%;
+    border-radius: 5px;
     border: 1px solid dark-grey;
     cursor: pointer;
+}
+.search-result .info {
+    text-align: center;
+    position: relative;
+    bottom: 90px;
+    width: 100%;
+    font-size: 40px;
+    background-color: white;
+    color: black;
 }
 .all-docs {
     background-color: white;
@@ -290,6 +282,7 @@ footer div {
     height: 6vh;
     font-size: 5vh;
 }
+
 .popup-menu {
     display: flex;
     flex-direction: row;
@@ -305,12 +298,7 @@ footer div {
     background-color: black;
     opacity: 0.7;
 }
-.camera-container {
-    background-color: red;
-    height: 100vh;
-    width: 70vw;
-    z-index: 10;
-}
+
 .camera {
     background-color: black;
     display: flex;
@@ -321,9 +309,11 @@ footer div {
 }
 
 .captured-img-container {
-    background-color: yellow;
+    top: 0;
+    left: 0;
+    background-color: black;
     width: 100vw;
-    height: 70vh;
+    height: 100vh;
 }
 .captured-img-container canvas {
     height: 100%;
@@ -331,7 +321,7 @@ footer div {
 }
 .captured-img-container img {
     width: 100%;
-    height: 100%;
+    height: 60%;
 }
 .capture-btn {
     position: fixed;
