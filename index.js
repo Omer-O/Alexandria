@@ -158,7 +158,7 @@ app.post(
         console.log("*******store document*******", imageUrl);
         const userId = req.session.userId;
         const text = req.body.text;
-        const title = "title";
+        const title = req.body.title || "New Doc";
         const tags = "tags";
         try {
             const stored = await db.storeInDocuments(
@@ -180,8 +180,8 @@ app.post("/update-text", async (req, res) => {
     console.log("req.body", req.body);
     const docId = req.body.docId;
     const text = req.body.text;
-    const title = "Driving license"; //req.body.title;
-    const tags = "tags"; //req.body.tags;
+    const title = req.body.title || "New Doc";
+    const tags = req.body.tags || "no tags"; //req.body.tags;
     console.log("*******Update text*******");
 
     try {
