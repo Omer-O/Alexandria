@@ -4,9 +4,8 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 export function Camera(props) {
     return (
-        <div className="camera">
+        <div className="wrapper">
             <video id="video" />
-            //camera live stream
             <button
                 id="startButton"
                 className="capture-btn"

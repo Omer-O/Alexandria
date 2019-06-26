@@ -39,7 +39,11 @@ export class CapturedImage extends React.Component {
             <div className="wrapper">
                 <div>
                     {this.props.cameraVisible && <WebcamCapture />}
-                    <img id="photo" alt="Your photo" />
+                    <img
+                        id="photo"
+                        alt="Your photo"
+                        style={{ transform: `rotate(${rotation}deg)` }}
+                    />
                 </div>
                 <footer>
                     <button onClick={this.rotateleft} type="button">

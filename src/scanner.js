@@ -85,11 +85,7 @@ export class Scanner extends Component {
     render() {
         return (
             <div className="wrapper">
-                <canvas
-                    id="canvas"
-                    style={{ transform: "rotate(90deg)" }}
-                    hidden
-                />
+                <canvas id="canvas" hidden />
                 <CapturedImage
                     cameraVisible={this.state.cameraVisible}
                     savePicture={this.savePicture}

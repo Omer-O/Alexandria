@@ -26,7 +26,7 @@ export class Registration extends React.Component {
             })
             .then(({ data }) => {
                 if (data.success) {
-                    location.replace("/posts");
+                    location.replace("/home");
                 } else {
                     this.setState({
                         error: data.error

@@ -321,9 +321,9 @@ footer {
     background-color: black;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     width: 100vw;
-    height: 70vh;
+    height: 100vh;
 }
 
 .captured-img-container {
