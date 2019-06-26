@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
 export function Home(props) {
     const [query, setQuery] = useState("last10");
@@ -44,12 +46,17 @@ export function Home(props) {
     return (
         <div className="docs-display">
             {props.searchVisible && (
-                <input
-                    name="find"
-                    type="text"
-                    placeholder="search"
-                    onChange={e => setQuery(e.target.value)}
-                />
+                <div className="search-bar">
+                    <span onClick={props.hideSearchBar}>
+                        <FontAwesomeIcon icon={faUndo} />
+                    </span>
+                    <input
+                        name="find"
+                        type="text"
+                        placeholder="search"
+                        onChange={e => setQuery(e.target.value)}
+                    />
+                </div>
             )}
             <div className="results">
                 {docs.length ? (

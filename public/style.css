@@ -135,19 +135,16 @@ header {
     height: 10vh;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
-header .div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 
-    width: 50%;
-}
 .nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15vw;
     height: 100%;
-    padding: 20px;
     font-size: 40px;
     font-size: white;
 }
@@ -198,24 +195,34 @@ header .div {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 20px;
     overflow: hidden;
 }
-.docs-display input {
+.search-bar {
+    height: 10vh;
+    align-content: stretch;
+    background-color: white;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 10vh;
-    border: none;
-    border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 10;
-    font-size: 6vh;
+    flex-direction: row;
+    border-bottom: solid grey 2px;
+    border-top: solid grey 1px;
 }
-
+.search-bar input {
+    border: none;
+    width: 80vw;
+    z-index: 10;
+    font-size: 4vh;
+}
+.search-bar span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+}
 .results {
     width: 98vw;
     height: 100%;
@@ -275,6 +282,7 @@ header .div {
     height: 6vh;
     font-size: 5vh;
 }
+
 .popup-menu {
     display: flex;
     flex-direction: row;

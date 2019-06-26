@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { TesseractWorker } from "tesseract.js";
 const worker = new TesseractWorker();
 
-export class DocumentViewr extends React.Component {
+export class DocumentViewer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};

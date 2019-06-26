@@ -7,7 +7,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "./axios";
-import { DocumentViewr } from "./document-viewr";
+import { DocumentViewr } from "./document-viewer";
 import FindDocs from "./find-docs";
 import { Documents } from "./documents";
 import { WebcamCapture } from "./webcam";
@@ -25,7 +25,7 @@ export class App extends React.Component {
         this.hideScanner = this.hideScanner.bind(this);
         this.showScanner = this.showScanner.bind(this);
         this.showSearch = this.showSearch.bind(this);
-        this.hideSearch = this.hideSearch.bind(this);
+        this.hideSearchBar = this.hideSearchBar.bind(this);
 
         // this.uploadImage = this.uploadImage.bind(this);
     }
@@ -47,7 +47,7 @@ export class App extends React.Component {
         });
         this.state.scannerVisible;
     }
-    hideSearch() {
+    hideSearchBar() {
         this.setState({
             searchVisible: false
         });
@@ -84,23 +84,22 @@ export class App extends React.Component {
             <BrowserRouter>
                 <div className="app-container">
                     <header>
-                        <div />
+                        <div className="nav-btn" />
+                        <div className="nav-btn icon" onClick={this.showSearch}>
+                            <FontAwesomeIcon icon={faSearch} />
+                        </div>
                         <div>
-                            <span
-                                className="nav-btn icon"
-                                onClick={this.showSearch}
-                            >
-                                <FontAwesomeIcon icon={faSearch} />
-                            </span>
                             <Link to="/home" className="nav-btn">
-                                <span>Home</span>
+                                Home
                             </Link>
+                        </div>
 
+                        <div className="nav-btn">
                             <a href="/logout" className="nav-btn">
                                 <FontAwesomeIcon icon={faSignOutAlt} />
                             </a>
-                            <ProfileMenu />
                         </div>
+                        <ProfileMenu />
                     </header>
 
                     <div className="app-body">
@@ -120,7 +119,6 @@ export class App extends React.Component {
                                 <FontAwesomeIcon icon={faUndo} />
                             </button>
                         )}
-
                         {this.state.scannerVisible && (
                             <Scanner showScanner={this.showScanner} />
                         )}
@@ -129,7 +127,7 @@ export class App extends React.Component {
                             render={() => (
                                 <Home
                                     searchVisible={this.state.searchVisible}
-                                    hideSearchBar={this.hideSearch}
+                                    hideSearchBar={this.hideSearchBar}
                                 />
                             )}
                         />
