@@ -59,14 +59,14 @@ export class Ocr extends React.Component {
     }
     render() {
         return (
-            <button
-                className="save-btn"
+            <div
+                className="nav-btn"
                 onClick={e => {
                     this.convertUrl();
                 }}
             >
                 Raad document
-            </button>
+            </div>
         );
     }
 }

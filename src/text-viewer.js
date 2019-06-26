@@ -11,7 +11,7 @@ export class TextViewer extends React.Component {
 
     render() {
         return (
-            <div className="text-viewer full-page">
+            <div className="wrapper">
                 <header>
                     <FontAwesomeIcon
                         icon={faUndo}
@@ -21,8 +21,20 @@ export class TextViewer extends React.Component {
 
                     <div className="nav-btn">fjlksdf</div>
                 </header>
+                <div className="mid-section">
+                    <div className="text-viewer">
+                        <p>{this.props.txt}</p>
+                    </div>
+                </div>
+                <footer>
+                    <FontAwesomeIcon
+                        icon={faUndo}
+                        className="nav-btn"
+                        onClick={this.props.hide}
+                    />
 
-                <p>{this.props.txt}</p>
+                    <div className="nav-btn">fjlksdf</div>
+                </footer>
             </div>
         );
     }
