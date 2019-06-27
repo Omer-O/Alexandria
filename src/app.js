@@ -5,8 +5,8 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
-ImageCrop;
-import { ImageCrop } from "./crop";
+
+import { Test } from "./test";
 import axios from "./axios";
 import { DocumentViewr } from "./document-viewer";
 import FindDocs from "./find-docs";
@@ -107,7 +107,6 @@ export class App extends React.Component {
                     <div className="mid-section">
                         <Route path="/camera" component={Scanner} />
 
-                        <Route path="/crop" component={ImageCrop} />
                         <Route
                             path={"/home"}
                             render={() => (
@@ -117,6 +116,7 @@ export class App extends React.Component {
                                 />
                             )}
                         />
+                        <Route path={"/test"} render={() => <Test />} />
                         <Route
                             path="/doc/:id"
                             render={props => (
