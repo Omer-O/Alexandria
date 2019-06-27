@@ -83,15 +83,10 @@ export class App extends React.Component {
             <BrowserRouter>
                 <div className="wrapper">
                     <header>
-                        <div className="nav-btn" />
                         <div className="nav-btn icon" onClick={this.showSearch}>
                             <FontAwesomeIcon icon={faSearch} />
                         </div>
-                        <div>
-                            <Link to="/home" className="nav-btn">
-                                Home
-                            </Link>
-                        </div>
+
                         <div className="nav-btn">
                             <a href="/logout" className="nav-btn">
                                 <FontAwesomeIcon icon={faSignOutAlt} />
