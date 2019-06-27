@@ -19,15 +19,19 @@ export class Speak extends React.Component {
         }
         const text = this.props.txt;
         speech
-            .init()
+            .init({
+                volume: 0.5,
+                lang: "en-GB",
+                rate: 0.9,
+                pitch: 1,
+                voice: "Google UK English Female"
+            })
             .then(data => {
                 // The "data" object contains the list of available voices and the voice synthesis params
                 console.log(
                     "Speech is ready, voices are available",
                     data.voices[5]
                 );
-                voice = data.voices[5].name;
-                speech.setVoice(voice);
             })
             .catch(e => {
                 console.error("An error occured while initializing : ", e);
@@ -35,7 +39,7 @@ export class Speak extends React.Component {
         const resumeButton = document.getElementById("resume");
         const pauseButton = document.getElementById("pause");
 
-        setTimeout(speak, 1000);
+        setTimeout(speak, 300);
         function speak() {
             speech
                 .speak({
@@ -86,11 +90,11 @@ export class Speak extends React.Component {
 
                     <div className="tts">
                         <div>
-                            <button id="play" onClick={this.speak}>
+                            <span id="play" onClick={this.speak}>
                                 Play
-                            </button>
-                            <button id="pause"> Pause </button>
-                            <button id="resume"> Resume </button>
+                            </span>
+                            <span id="pause"> Pause </span>
+                            <span id="resume"> Resume </span>
                         </div>
                     </div>
                 </div>

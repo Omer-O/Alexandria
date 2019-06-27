@@ -14,13 +14,22 @@ export class ImgViewer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            rotation: 0
+            rotation: 0,
+            alert: false
         };
         this.deleteImg = this.deleteImg.bind(this);
         this.rotate = this.rotate.bind(this);
         this.rotateleft = this.rotateleft.bind(this);
+        this.alert = this.alert.bind(this);
     }
     componentDidMount() {}
+    alert() {
+        if (this.state.alert) {
+            this.setState({ alert: false });
+        } else {
+            this.setState({ alert: true });
+        }
+    }
     deleteImg() {
         console.log("this.props.props.img_url", this.props.props.img_url);
         axios
@@ -30,9 +39,6 @@ export class ImgViewer extends React.Component {
             })
             .then(data => {
                 console.log("deleted img id ", data);
-                if (data.data.success == true) {
-                    location.replace("/home");
-                }
             })
             .catch(e => {
                 console.log(e);
@@ -115,9 +121,21 @@ export class ImgViewer extends React.Component {
                             showText={this.props.showText}
                         />
                     )}
-                    <div className="nav-btn" onClick={this.deleteImg}>
+                    <div className="nav-btn" onClick={this.alert}>
                         <FontAwesomeIcon icon={faTrash} className="nav-btn" />
                     </div>
+                    {this.state.alert && (
+                        <div className="alert">
+                            <div>are you sure? </div>
+                            <div className="delete">
+                                <span onClick={this.alert}>no</span>
+                                <Link to="/home">
+                                    {" "}
+                                    <span onClick={this.deleteImg}>yes</span>
+                                </Link>
+                            </div>
+                        </div>
+                    )}
                 </footer>
             </div>
         );

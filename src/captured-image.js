@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { WebcamCapture } from "./webcam";
 import { Link } from "react-router-dom";
 
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -48,20 +53,30 @@ export class CapturedImage extends React.Component {
                     />
                 </div>
                 <footer className="captured-nav">
-                    <button onClick={this.props.showCamera}>BACK</button>
-
-                    <button onClick={this.rotateleft} type="button">
-                        left
-                    </button>
-                    <button onClick={this.rotate} type="button">
-                        right
-                    </button>
-                    <button
-                        className="save-img-btn"
-                        onClick={this.props.savePicture}
-                    >
-                        SAVE
-                    </button>
+                    <div onClick={this.props.showCamera}>
+                        <FontAwesomeIcon
+                            icon={faArrowLeft}
+                            className="nav-btn back icon"
+                        />
+                    </div>
+                    <div className="nav-btn" onClick={this.rotateleft}>
+                        <FontAwesomeIcon
+                            icon={faUndo}
+                            className="nav-btn icon"
+                        />
+                    </div>
+                    <div className="nav-btn" onClick={this.rotate}>
+                        <FontAwesomeIcon
+                            icon={faRedo}
+                            className="nav-btn icon"
+                        />
+                    </div>
+                    <div className="nav-btn" onClick={this.props.savePicture}>
+                        <FontAwesomeIcon
+                            icon={faCheck}
+                            className="nav-btn icon"
+                        />
+                    </div>
                 </footer>
             </div>
         );
