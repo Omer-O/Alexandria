@@ -37,11 +37,11 @@ module.exports.updateDoc = function(docId, text, title, tags) {
 };
 
 module.exports.findDocs = function(text) {
-    if (text == "last10") {
-        console.log("last 10 docs from db");
+    if (text == "last9") {
+        console.log("last 9 docs from db");
         return db.query(
             `
-            SELECT * FROM documents ORDER BY id DESC LIMIT 10;
+            SELECT * FROM documents ORDER BY id DESC LIMIT 12;
             `
         );
     } else {
