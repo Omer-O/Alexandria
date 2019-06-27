@@ -169,8 +169,12 @@ app.post(
                 tags
             );
             console.log("stored doc", stored);
+            res.json(stored.rows[0].id);
         } catch (e) {
             console.log("error at stored doc", e);
+            res.json({
+                error: "oops, WRONG INFO"
+            });
         }
     }
 );
