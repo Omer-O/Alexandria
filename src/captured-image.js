@@ -47,7 +47,7 @@ export class CapturedImage extends React.Component {
                         style={{ transform: `rotate(${rotation}deg)` }}
                     />
                 </div>
-                <footer>
+                <footer className="captured-nav">
                     <button onClick={this.props.showCamera}>BACK</button>
 
                     <button onClick={this.rotateleft} type="button">

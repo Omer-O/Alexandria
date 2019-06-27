@@ -408,6 +408,8 @@ search-result > a {
 }
 
 .camera {
+    position: absolute;
+    z-index: 1;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -422,15 +424,14 @@ search-result > a {
     background-color: black;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
 }
-.captured-img-container canvas {
-    height: 100%;
-    width: 100%;
-}
+
 .captured-img-container img {
     margin: 50px;
-    width: 90%;
-    height: 85%;
+    max.width: 90%;
+    max-height: 70%;
 }
 .capture-btn {
     position: fixed;
@@ -444,6 +445,12 @@ search-result > a {
     border-radius: 50%;
     font-size: 80px;
     position: absolute;
+}
+.stop-cam {
+    position: fixed;
+    left: 50px;
+    top: 50px;
+    z-index: 10;
 }
 .img-viewer {
     display: flex;
@@ -464,6 +471,10 @@ video {
     height: 88%;
 }
 
+.captured-nav button {
+    background-color: none;
+    color: black;
+}
 .img-viewer img {
     width: 95%;
     height: 90%;
