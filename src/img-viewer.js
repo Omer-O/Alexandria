@@ -39,9 +39,6 @@ export class ImgViewer extends React.Component {
             })
             .then(data => {
                 console.log("deleted img id ", data);
-                if (data.data.success == true) {
-                    location.replace("/home");
-                }
             })
             .catch(e => {
                 console.log(e);
@@ -128,11 +125,13 @@ export class ImgViewer extends React.Component {
                     </div>
                     {this.state.alert && (
                         <div className="alert">
-                            <div>delete document</div>
-                            <div>are you sure?</div>
+                            <div>are you sure? </div>
                             <div className="delete">
                                 <span onClick={this.alert}>no</span>
-                                <span onClick={this.deleteImg}>yes</span>
+                                <Link to="/home">
+                                    {" "}
+                                    <span onClick={this.deleteImg}>yes</span>
+                                </Link>
                             </div>
                         </div>
                     )}
