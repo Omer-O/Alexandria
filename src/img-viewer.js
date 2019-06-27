@@ -6,6 +6,8 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class ImgViewer extends React.Component {
@@ -60,10 +62,15 @@ export class ImgViewer extends React.Component {
                     <Link to="/home">
                         <FontAwesomeIcon
                             icon={faArrowLeft}
-                            className="nav-btn"
+                            className="nav-btn back icon"
                         />
                     </Link>
-                    <div className="nav-btn">fjlksdf</div>
+                    <Link to="/home">
+                        <FontAwesomeIcon
+                            icon={faEllipsisV}
+                            className="nav-btn back icon"
+                        />
+                    </Link>
                 </header>
                 <div className="mid-section">
                     <div className="img-viewer">
@@ -78,10 +85,16 @@ export class ImgViewer extends React.Component {
                 </div>
                 <footer>
                     <div className="nav-btn" onClick={this.rotateleft}>
-                        <FontAwesomeIcon icon={faUndo} className="nav-btn" />
+                        <FontAwesomeIcon
+                            icon={faUndo}
+                            className="nav-btn icon"
+                        />
                     </div>
                     <div className="nav-btn" onClick={this.rotate}>
-                        <FontAwesomeIcon icon={faRedo} className="nav-btn" />
+                        <FontAwesomeIcon
+                            icon={faRedo}
+                            className="nav-btn icon"
+                        />
                     </div>{" "}
                     {this.props.props.txt ? (
                         <div
@@ -90,7 +103,7 @@ export class ImgViewer extends React.Component {
                                 this.props.showText();
                             }}
                         >
-                            View Text
+                            Text
                         </div>
                     ) : (
                         <Ocr

@@ -123,6 +123,7 @@ footer {
     align-items: center;
     color: white;
     padding-left: 10vw;
+    padding-right: 10vw;
 }
 footer {
     position: fixed;
@@ -170,6 +171,10 @@ footer {
 }
 .icon {
     color: white;
+}
+.back {
+    padding-top: 10px;
+    font-size: 50px;
 }
 
 .display-text {
