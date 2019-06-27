@@ -44,9 +44,12 @@ export function FindDocs() {
                 <div className="results">
                     {docs.length ? (
                         docs.map(doc => (
-                            <div key={doc.id}>
+                            <div
+                                className="search-result-container"
+                                key={doc.id}
+                            >
                                 <div className="search-result">
-                                    <div className="">
+                                    <div className="search-result-card">
                                         <Link to={`/doc/${doc.id}`}>
                                             <img
                                                 src={

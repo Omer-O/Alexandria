@@ -5,9 +5,11 @@
     font-family: Helvetica, Arial, sans-serif;
     text-decoration: none;
 }
+
 a {
     color: #365899;
 }
+
 body {
     background: #f2f3f5;
     font-family: Calluna, Arial, sans-serif;
@@ -247,7 +249,13 @@ footer {
     grid-row-gap: 0.3em;
     grid-column-gap: 0.3em;
 }
-.search-result {
+.search-result-container:hover {
+    color: lightgrey;
+    box-shadow: 0 11px 12px rgba(2, 9, 8, 1), 0 15px 6px rgba(0, 0, 0, 0.12);
+    transition: (all .3s);
+}
+
+.search-result-card {
     display: inline-block;
     position: relative;
     height: 22vh;
@@ -256,6 +264,12 @@ footer {
     color: #385898;
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin: 10px;
+}
+
+.search-result-card:hover {
+    color: lightgrey;
+    box-shadow: 0 11px 12px rgba(2, 9, 8, 1), 0 15px 6px rgba(0, 0, 0, 0.12);
+    transition: (all .3s);
 }
 
 .no-results {
@@ -271,6 +285,12 @@ footer {
     border: 1px solid dark-grey;
     cursor: pointer;
 }
+.search-result img:hover {
+    color: lightgrey;
+    box-shadow: 0 11px 12px rgba(2, 9, 8, 1), 0 15px 6px rgba(0, 0, 0, 0.12);
+    transition: (all .3s);
+}
+
 .search-result .info {
     text-align: center;
     position: relative;
