@@ -2,17 +2,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Roboto Mono", monospace;
     letter-spacing: 0.09em;
     color: white;
     text-decoration: none;
     font-weight: 100;
-}
-
-a {
-    color: white;
-    text-decoration: underline;
-    background-color: black;
 }
 
 body {
@@ -91,6 +85,12 @@ h5 {
     -o-animation: fadein 2s; /* Opera < 12.1 */
     animation: fadein 2s;
 }
+.registration-container a,
+.login-container a {
+    color: white;
+    text-decoration: underline;
+    background-color: black;
+}
 .registration-container form,
 .login-container form {
     display: flex;
@@ -108,10 +108,11 @@ h5 {
 .login-container input:hover {
     color: white;
     box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
- }
+}
 .registration-container input,
 .login-container input {
-    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.29), inset 0px 7px 10px 7px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.29),
+        inset 0px 7px 10px 7px rgba(0, 0, 0, 0.22);
     color: #379683;
     background: #ffffffb8;
     font-size: 37px;
@@ -120,7 +121,7 @@ h5 {
     border: none;
     border-radius: 5px;
     margin: 30px;
-    border-bottom: 2px solid #05386B;
+    border-bottom: 2px solid #05386b;
     border: 1px solid #ccd0d5;
 }
 
@@ -206,14 +207,14 @@ footer {
     align-items: center;
     height: 150px;
     width: 150px;
-    background-color: black;
+    background-color: grey;
     color: white;
     border-radius: solid black;
     border-radius: 50%;
-    font-size: 80px;
+    font-size: 70px;
     position: absolute;
-    bottom: 100px;
-    right: 50px;
+    bottom: 80px;
+    right: 80px;
     z-index: 10;
 }
 .save-img-btn {
@@ -246,7 +247,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 50px;
     overflow: hidden;
 }
 .search-bar {
@@ -258,11 +259,10 @@ footer {
     left: 0;
     display: flex;
     flex-direction: row;
-    border-bottom: solid grey 2px;
-    border-top: solid grey 1px;
+    border: solid grey 2px;
 }
 .search-bar input {
-    border: none;
+    border-left: none;
     width: 80vw;
     z-index: 10;
     font-size: 4vh;
@@ -272,6 +272,10 @@ footer {
     justify-content: center;
     align-items: center;
     width: 20vw;
+    color: black;
+}
+.search-bar span .icon {
+    color: black;
 }
 .results {
     width: 98vw;
@@ -290,15 +294,12 @@ footer {
     transition: (all 0.3s);
 }
 
-.search-result-card {
-    display: inline-block;
-    position: relative;
-    height: 22vh;
-    width: 29vw;
-    background: white;
-    color: #385898;
+.search-result {
+    width: 100%;
+    height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin: 10px;
+    border-radius: 10px;
 }
 
 .search-result-card:hover {
@@ -339,14 +340,25 @@ footer {
     transition: (all 0.3s);
 }
 
-.search-result .info {
-    text-align: center;
+.info {
     position: relative;
-    bottom: 90px;
+    text-decoration: none;
+    bottom: 150px;
     width: 100%;
-    font-size: 40px;
-    background-color: white;
-    color: black;
+    height: 150px;
+    font-size: 35px;
+    background-color: black;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.info a {
+    text-decoration: none;
+}
+search-result > a {
+    text-decoration: none;
 }
 .all-docs {
     background-color: white;

@@ -201,8 +201,8 @@ app.post("/update-text", async (req, res) => {
 app.post("/register", (req, res) => {
     console.log("*******POST REGISTER*******");
     console.log(req.body.email);
-    const first = req.body.first;
-    const last = req.body.last;
+    const first = "first";
+    const last = "last";
     const email = req.body.email;
     const password = req.body.password;
 

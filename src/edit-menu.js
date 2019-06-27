@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
-export class ProfileMenu extends React.Component {
+export class EditMenu extends React.Component {
     constructor(props) {
         super(props);
         this.state = { showMenu: false };
@@ -47,8 +47,8 @@ export class ProfileMenu extends React.Component {
                             <div className="pop-menu-container">
                                 <ul className="menu-list">
                                     //later will be wrapped with LINK
-                                    <li>log out</li>
-                                    <li>all docs</li>
+                                    <li>Edit Title</li>
+                                    <li>Edit Tags</li>
                                     <li>tags</li>
                                 </ul>
                             </div>

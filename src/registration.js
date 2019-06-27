@@ -19,8 +19,6 @@ export class Registration extends React.Component {
         console.log("post register, first", this.first);
         axios
             .post("/register", {
-                first: "first",
-                last: "last",
                 email: this.state.email,
                 password: this.state.password
             })
@@ -60,7 +58,6 @@ export class Registration extends React.Component {
                     />
 
                     <button
-                        disabled={!this.state.first}
                         className="form-btn"
                         type="submit"
                         onClick={e => this.submit(e)}

@@ -68,6 +68,9 @@ export class Login extends React.Component {
                         <div className="error-message">{this.state.error}</div>
                     )}
                 </form>
+                <h5>
+                    Not a member ? <Link to="/"> Register</Link>
+                </h5>
             </div>
         );
     }
