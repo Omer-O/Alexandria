@@ -98,7 +98,7 @@ export class App extends React.Component {
                         </div>
                     </header>
 
-                    <div className="mid-section">
+                    <div className="app-body">
                         <Route path="/camera" component={Scanner} />
 
                         <Route

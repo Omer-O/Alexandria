@@ -65,7 +65,7 @@ export class Ocr extends React.Component {
                     this.convertUrl();
                 }}
             >
-                Raad document
+                OCR
             </div>
         );
     }
