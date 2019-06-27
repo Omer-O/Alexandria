@@ -1,5 +1,5 @@
 import React from "react";
-import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Speak } from "./speak";
 
@@ -15,12 +15,10 @@ export class TextViewer extends React.Component {
             <div className="wrapper">
                 <header>
                     <FontAwesomeIcon
-                        icon={faUndo}
+                        icon={faArrowLeft}
                         className="nav-btn"
                         onClick={this.props.hide}
                     />
-
-                    <div className="nav-btn">fjlksdf</div>
                 </header>
                 <div className="mid-section">
                     <div className="text-viewer">
@@ -28,15 +26,7 @@ export class TextViewer extends React.Component {
                     </div>
                     <Speak txt={this.props.txt} />
                 </div>
-                <footer>
-                    <FontAwesomeIcon
-                        icon={faUndo}
-                        className="nav-btn"
-                        onClick={this.props.hide}
-                    />
-
-                    <div className="nav-btn">fjlksdf</div>
-                </footer>
+                <footer />
             </div>
         );
     }
