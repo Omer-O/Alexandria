@@ -1,7 +1,7 @@
 import React from "react";
 import Speech from "speak-tts";
 
-export class Test extends React.Component {
+export class Speak extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};

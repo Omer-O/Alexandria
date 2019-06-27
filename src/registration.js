@@ -19,8 +19,8 @@ export class Registration extends React.Component {
         console.log("post register, first", this.first);
         axios
             .post("/register", {
-                first: this.state.first,
-                last: this.state.last,
+                first: "first",
+                last: "last",
                 email: this.state.email,
                 password: this.state.password
             })
@@ -37,59 +37,41 @@ export class Registration extends React.Component {
     render() {
         return (
             <div className="registration-container">
-                <div className="registration-form">
-                    <div>
-                        <h1>Create a new account</h1>
-                    </div>
-                    <form
-                        onSubmit={e => this.submit(e)}
-                        className="registration-form"
-                    >
-                        <input
-                            name="first"
-                            type="text"
-                            placeholder="first name"
-                            required
-                            onChange={e => this.handleChange(e)}
-                        />
-                        <input
-                            name="last"
-                            type="text"
-                            placeholder="last name"
-                            required
-                            onChange={e => this.handleChange(e)}
-                        />
-                        <input
-                            name="email"
-                            type="email"
-                            placeholder="email"
-                            required
-                            onChange={e => this.handleChange(e)}
-                        />
-                        <input
-                            name="password"
-                            type="password"
-                            placeholder="password"
-                            required
-                            onChange={e => this.handleChange(e)}
-                        />
-
-                        <button
-                            disabled={!this.state.first}
-                            className="registration-form-btn"
-                            type="submit"
-                            onClick={e => this.submit(e)}
-                        >
-                            <h3>Sign Up</h3>
-                        </button>
-
-                        {this.state.error && (
-                            <div className="error-message">
-                                {this.state.error}
-                            </div>
-                        )}
-                    </form>
+                <div className="reg-title">
+                    <h3>Create a new account</h3>
                 </div>
+                <form
+                    onSubmit={e => this.submit(e)}
+                    className="registration-form"
+                >
+                    <input
+                        name="email"
+                        type="email"
+                        placeholder="email"
+                        required
+                        onChange={e => this.handleChange(e)}
+                    />
+                    <input
+                        name="password"
+                        type="password"
+                        placeholder="password"
+                        required
+                        onChange={e => this.handleChange(e)}
+                    />
+
+                    <button
+                        disabled={!this.state.first}
+                        className="form-btn"
+                        type="submit"
+                        onClick={e => this.submit(e)}
+                    >
+                        <h3>Sign Up</h3>
+                    </button>
+
+                    {this.state.error && (
+                        <div className="error-message">{this.state.error}</div>
+                    )}
+                </form>
             </div>
         );
     }

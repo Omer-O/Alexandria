@@ -22,102 +22,72 @@ button {
     border-radius: 50px;
 }
 
-/*--------------------login-------------------------- */
+/*--------------------login-----register--------------------- */
 
 .welcome-wrapper {
-    background-color: #e9ebee;
+    background-image: url(/img/login.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.bluebar {
+.reg-title {
+    text-align: center;
+    color: white;
+}
+
+.registration-container,
+.login-container {
+    width: 100%;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+}
+.registration-container form,
+.login-container form {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    padding: 20px 100px;
-    color: white;
-    background-color: #3b5998;
-    width: 100vw;
-}
-.bluebar h1 {
-    font-size: 40px;
 }
 
-.login-form form {
-    font-size: 12px;
-    display: flex;
-    flex-direction: row;
-}
-.login-form button {
-    background-color: #365899;
-    border-color: #29487d;
-    color: white;
-    width: 150px;
-    height: 50px;
-    font-weight: bold;
-}
-form div {
-    width: 160px;
-    display: flex;
-    flex-direction: column;
-}
-
-.login-form input {
-    width: 150px;
-    height: 50px;
-    margin: 10px;
-}
-.login-form div {
-    margin-left: 10px;
-    width: 100%;
-    height: 15px;
-}
-.login-form span {
-    margin-right: 20px;
-    display: inline-block;
-    width: 150px;
-    font-size: 12px;
-}
-/*--------------------Registration-------------------------- */
-
-.registration-container {
-    padding: 0 100px;
-    color: #333;
-    display: flex;
-    flex-direction: row;
-}
-
-.registration-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.registration-form input {
+.registration-container input,
+.login-container input {
     height: 100px;
     margin-top: 20px;
-    order: 1px solid #ccd0d5;
+    border: 1px solid #ccd0d5;
     border-radius: 5px;
-    margin-right: 20px;
     width: 400px;
+    margin: 30px;
 }
 
-.registration-form button {
+.registration-container button,
+.login-container button {
     width: 400px;
     height: 100px;
     padding: 10px 20px;
     margin-top: 20px;
     text-align: center;
-    background-color: #69a74e;
-    box-shadow: inset 0 1px 1px #a4e388;
-    border-color: #3b6e22;
+    background-color: black;
+    opacity: 0.8;
     border-radius: 5px;
+    border: solid black 1px;
     color: white;
 }
 .error-message {
@@ -138,7 +108,7 @@ form div {
 header,
 footer {
     font-weight: bold;
-    background-color: #14357a;
+    background-color: #192231;
     border: solid black 1px;
     height: 10vh;
     width: 100vw;
@@ -372,9 +342,10 @@ footer {
     align-items: center;
     background-color: black;
     height: 100%;
+    width: 100%;
 }
 .img-viewer img {
-    width: 95%;
+    width: 100%;
 }
 .text-viewer {
     background-color: white;

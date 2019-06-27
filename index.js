@@ -274,6 +274,7 @@ app.post("/login", (req, res) => {
 app.post("/delete", function(req, res) {
     console.log("req.body", req.body.url);
     s3.deleteImage(req.body.url);
+
     console.log("DELTED IMG", req.body.id);
 });
 //////////////////////////////////Logout////////////////////////////////////////
