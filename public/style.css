@@ -158,6 +158,9 @@ img.img-logo-welcome {
     height: 100vh;
     overflow: hidden;
 }
+.app-body {
+    height: 90vh;
+}
 header,
 footer {
     font-weight: bold;
@@ -171,6 +174,7 @@ footer {
     align-items: center;
     color: white;
     padding-left: 10vw;
+    padding-right: 10vw;
 }
 footer {
     position: fixed;
@@ -219,6 +223,10 @@ footer {
 .icon {
     color: white;
 }
+.back {
+    padding-top: 10px;
+    font-size: 50px;
+}
 
 .display-text {
     display: flex;
@@ -231,6 +239,9 @@ footer {
 
 /*--------------------home-------------------------- */
 .docs-display {
+    height: 100%;
+    background-color: black;
+    opacity: 0.9;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -267,9 +278,12 @@ footer {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-row-gap: 0.3em;
-    grid-column-gap: 0.3em;
+    grid-row-gap: 0.1em;
+    grid-column-gap: 0.1em;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
+
 .search-result-container:hover {
     color: lightgrey;
     box-shadow: 0 11px 12px rgba(2, 9, 8, 1), 0 15px 6px rgba(0, 0, 0, 0.12);
