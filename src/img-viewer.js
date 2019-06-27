@@ -30,6 +30,9 @@ export class ImgViewer extends React.Component {
             })
             .then(data => {
                 console.log("deleted img id ", data);
+                if (data.data.success == true) {
+                    location.replace("/home");
+                }
             })
             .catch(e => {
                 console.log(e);

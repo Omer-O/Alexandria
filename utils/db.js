@@ -18,7 +18,15 @@ module.exports.storeInDocuments = function(userId, img_url, text, title, tags) {
         [userId, img_url, text, title, tags]
     );
 };
-
+module.exports.deleteDoc = function deleteDoc(id) {
+    return db.query(
+        `
+        DELETE FROM documents
+        WHERE (id=$1)
+        `,
+        [id]
+    );
+};
 module.exports.updateDoc = function(docId, text, title, tags) {
     return db.query(
         `UPDATE documents

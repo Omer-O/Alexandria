@@ -58,16 +58,13 @@ export class Registration extends React.Component {
                         required
                         onChange={e => this.handleChange(e)}
                     />
-
                     <button
-                        disabled={!this.state.first}
                         className="form-btn"
                         type="submit"
                         onClick={e => this.submit(e)}
                     >
                         <h3>Sign Up</h3>
                     </button>
-
                     {this.state.error && (
                         <div className="error-message">{this.state.error}</div>
                     )}
