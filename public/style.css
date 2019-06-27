@@ -165,7 +165,7 @@ img.img-logo-welcome {
 header,
 footer {
     font-weight: bold;
-    background-color: #192231;
+    background-color: #537483;
     border: solid black 1px;
     height: 10vh;
     width: 100vw;
@@ -174,8 +174,9 @@ footer {
     justify-content: space-between;
     align-items: center;
     color: white;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    /* padding-left: 10vw; */
+    /* padding-right: 10vw; */
+    padding-right: 7vw;
 }
 footer {
     position: fixed;
@@ -192,9 +193,9 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 15vw;
+    /* width: 15vw; */
     height: 100%;
-    font-size: 40px;
+    /* font-size: 40px; */
 }
 
 .app-container {
@@ -207,7 +208,7 @@ footer {
     align-items: center;
     height: 150px;
     width: 150px;
-    background-color: grey;
+    background-color: #537483;
     color: white;
     border-radius: solid black;
     border-radius: 50%;
@@ -261,23 +262,31 @@ footer {
     flex-direction: row;
     border: solid grey 2px;
 }
-.search-bar input {
+.input-search {
+    color: black;
     border-left: none;
-    width: 80vw;
+    width: 100vw;
     z-index: 10;
     font-size: 4vh;
 }
+.search-bar input[type="text"] {
+    color: black;
+    padding-right: 190px;
+}
+
 .search-bar span {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 20vw;
+    background: #537483;
     color: black;
 }
-.search-bar span .icon {
+.search-bar span.icon {
     color: black;
 }
 .results {
+    color: black;
     width: 98vw;
     height: 100%;
     display: grid;
