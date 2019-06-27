@@ -6,14 +6,10 @@ import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
-import { Test } from "./test";
 import axios from "./axios";
 import { DocumentViewr } from "./document-viewer";
-import FindDocs from "./find-docs";
-import { Documents } from "./documents";
 import { WebcamCapture } from "./webcam";
 import { Home } from "./home";
-import { ProfileMenu } from "./profile-menu";
 import { Scanner } from "./scanner";
 import { DocumentViewer } from "./document-viewer";
 
@@ -101,7 +97,6 @@ export class App extends React.Component {
                                 <FontAwesomeIcon icon={faSignOutAlt} />
                             </a>
                         </div>
-                        <ProfileMenu />
                     </header>
 
                     <div className="mid-section">

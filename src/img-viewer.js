@@ -38,12 +38,12 @@ export class ImgViewer extends React.Component {
                 </header>
                 <div className="mid-section">
                     <div className="img-viewer">
-                        <h3>{this.props.props.title}</h3>
                         <img
                             src={this.props.props.img_url}
                             alt="sjkfsnd"
                             id="read"
                         />
+                        <h3 className="img-title">{this.props.props.title}</h3>
                     </div>
                 </div>
                 <footer>

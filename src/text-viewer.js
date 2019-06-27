@@ -1,7 +1,6 @@
 import React from "react";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Test } from "./test";
 
 export class TextViewer extends React.Component {
     constructor(props) {

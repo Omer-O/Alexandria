@@ -74,6 +74,11 @@ export class Scanner extends Component {
                 .post("/store-document", formData)
                 .then(result => {
                     console.log("result of SCANNER:", result);
+                    if (result.data) {
+                        location.replace(`/doc/${result.data}`);
+                    } else {
+                        location.replace("/home");
+                    }
                 })
                 .catch(err => {
                     console.log(err);
@@ -83,6 +88,7 @@ export class Scanner extends Component {
     render() {
         return (
             <div className="wrapper">
+                {this.state.error}
                 <canvas id="canvas" hidden />
                 <CapturedImage
                     cameraVisible={this.state.cameraVisible}
