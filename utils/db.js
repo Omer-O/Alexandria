@@ -84,3 +84,6 @@ module.exports.getdocumentById = function(id) {
 module.exports.getUserDataByEmail = function(email) {
     return db.query(`SELECT * FROM users WHERE email = $1`, [email]);
 };
+module.exports.getTextDocument = function(id) {
+    return db.query(`SELECT * FROM documents WHERE id = $1`, [id]);
+};
