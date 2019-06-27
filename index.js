@@ -274,12 +274,23 @@ app.post("/login", (req, res) => {
         });
 });
 //////////////////////////////////delete image////////////////////////////////////////
-
-app.post("/delete", function(req, res) {
-    console.log("req.body", req.body.url);
-    s3.deleteImage(req.body.url);
-
-    console.log("DELTED IMG", req.body.id);
+// s3.deleteImage(req.body.url).then(result => {
+//     db.deleteDoc(req.body.id)
+//         .then(result => {
+app.post("/delete", async (req, res) => {
+    console.log("req.body", req.body);
+    let s3Url = req.body.url;
+    let imageId = req.body.id;
+    try {
+        const s3Delete = await s3.deleteImage(s3Url);
+        const docDelte = await db.deleteDoc(imageId);
+        res.json({ success: true });
+    } catch (err) {
+        console.log("error", err);
+        res.json({
+            error: "wrong email or passsword!"
+        });
+    }
 });
 //////////////////////////////////Logout////////////////////////////////////////
 
@@ -288,61 +299,7 @@ app.get("/logout", (req, res) => {
     req.session = null;
     res.redirect("/welcome");
 });
-//////////////////////////////////POST Uploader777777777777777777777777777777///
-
-app.post("/upload", uploader.single("file"), s3.upload, function(req, res) {
-    console.log(req.body);
-    // If nothing went wrong the file is already in the uploads directory
-    // req.file will refer to the image that was just uploaded
-    console.log("req.file: ", req.file);
-    // So what we want to store in the images table is the amazonaws URL + the filename.
-    var url = `${amazonUrl}${req.file.filename}`;
-
-    if (req.file) {
-        let userId = req.session.userId;
-        db.uploadImg(userId, url)
-            .then(results => {
-                console.log(results);
-                console.log("uploaded successfuly. image url: ", url);
-                res.json({
-                    imageUrl: url,
-                    success: true
-                });
-            })
-            .catch(e => {
-                console.log("error at /uplaod", e);
-            });
-    } else {
-        res.json({
-            success: false
-        });
-    }
-});
-////////////////////////////////// EDIT BIO ////////////////////////////////////////
-
-app.post("/edit-bio", (req, res) => {
-    console.log("*******edit bio*****");
-    console.log(req.body);
-
-    if (req.body.bio) {
-        let bio = req.body.bio;
-        let userId = req.session.userId;
-        db.updateBio(userId, bio)
-            .then(results => {
-                console.log(results);
-                res.json(results.rows[0]);
-            })
-            .catch(e => {
-                console.log("error at /uplaod", e);
-            });
-    } else {
-        res.json({
-            success: false
-        });
-    }
-});
-
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 app.get("*", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
