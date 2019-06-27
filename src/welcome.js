@@ -6,10 +6,11 @@ import { Login } from "./login";
 export function Welcome() {
     return (
         <div className="welcome-wrapper">
+            <img src="/img/logo.png" className="img-logo-welcome" />
             <HashRouter>
                 <div>
-                    <Login />
-                    <Registration />
+                    <Route exact path="/" component={Registration} />
+                    <Route path="/login" component={Login} />
                 </div>
             </HashRouter>
             <div />

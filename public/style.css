@@ -2,12 +2,17 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: 0.09em;
+    color: white;
     text-decoration: none;
+    font-weight: 100;
 }
 
 a {
-    color: #365899;
+    color: white;
+    text-decoration: underline;
+    background-color: black;
 }
 
 body {
@@ -47,6 +52,30 @@ button {
     }
 }
 
+h1 {
+    font-size: 2em;
+    font-weight: 300;
+    text-align: center;
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: 300;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 200px;
+}
+
+h4 {
+    margin-bottom: 40px;
+}
+
+h5 {
+    text-align: center;
+    margin-top: 100px;
+}
+
 .reg-title {
     text-align: center;
     color: white;
@@ -55,6 +84,7 @@ button {
 .registration-container,
 .login-container {
     width: 100%;
+    margin-top: 250px;
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 2s; /* Firefox < 16 */
     -ms-animation: fadein 2s; /* Internet Explorer */
@@ -69,14 +99,29 @@ button {
     align-items: center;
 }
 
+.registration-container input:focus,
+.login-container input:focus {
+    outline: none;
+}
+
+.registration-container input:hover,
+.login-container input:hover {
+    color: white;
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+ }
 .registration-container input,
 .login-container input {
-    height: 100px;
-    margin-top: 20px;
-    border: 1px solid #ccd0d5;
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.29), inset 0px 7px 10px 7px rgba(0, 0, 0, 0.22);
+    color: #379683;
+    background: #ffffffb8;
+    font-size: 37px;
+    padding: 35px 30px 9px 21px;
+    display: block;
+    border: none;
     border-radius: 5px;
-    width: 400px;
     margin: 30px;
+    border-bottom: 2px solid #05386B;
+    border: 1px solid #ccd0d5;
 }
 
 .registration-container button,
@@ -91,6 +136,12 @@ button {
     border-radius: 5px;
     border: solid black 1px;
     color: white;
+}
+img.img-logo-welcome {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: 500px;
 }
 .error-message {
     padding: 10px;
@@ -314,6 +365,7 @@ footer {
 .bright-side {
     width: 70vw;
 }
+
 .dark-side {
     width: 30vw;
     background-color: black;

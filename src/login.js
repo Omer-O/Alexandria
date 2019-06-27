@@ -40,7 +40,7 @@ export class Login extends React.Component {
         return (
             <div className="login-container">
                 <div className="reg-title">
-                    <h1>welcome to Alexandria</h1>
+                    <h4>Log In</h4>
                 </div>
                 <form onSubmit={e => this.submit(e)}>
                     <input

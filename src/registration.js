@@ -38,7 +38,7 @@ export class Registration extends React.Component {
         return (
             <div className="registration-container">
                 <div className="reg-title">
-                    <h3>Create a new account</h3>
+                    <h4>Create account</h4>
                 </div>
                 <form
                     onSubmit={e => this.submit(e)}
@@ -72,6 +72,9 @@ export class Registration extends React.Component {
                         <div className="error-message">{this.state.error}</div>
                     )}
                 </form>
+                <h5>
+                    a member ? <Link to="/login"> log in</Link>
+                </h5>
             </div>
         );
     }
