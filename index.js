@@ -130,6 +130,19 @@ app.get("/document/:id", async (req, res) => {
         console.log("GET DOC DATA ERROR: ", err);
     }
 });
+/////////////////////// GET TEXT /////////////////////
+app.get("/text/:id", async (req, res) => {
+    console.log("*******GET TEXT DATA*******");
+    const documentId = req.params.id;
+    try {
+        const docData = await db.getTextDocument(documentId);
+        console.log("TEXT data: ", docData.rows[0]);
+
+        res.json(docData.rows[0]);
+    } catch (err) {
+        console.log("GET TEXT ERROR: ", err);
+    }
+});
 ////////////////////////////FIND DOCS//////////////////////////
 
 app.post("/find-docs", (req, res) => {
@@ -189,10 +202,11 @@ app.post("/update-text", async (req, res) => {
     console.log("*******Update text*******");
 
     try {
-        const newData = await db.updateDoc(docId, text);
-        console.log("stored doc", newData);
+        const newData = await db.updateDoc(docId, text, title, tags);
+        console.log("stored update-text doc", newData);
+        res.json({ newData: "Ani prostetuzki" });
     } catch (e) {
-        console.log("error at stored doc", e);
+        console.log("error at stored update-text doc", e);
     }
 });
 
@@ -274,9 +288,6 @@ app.post("/login", (req, res) => {
         });
 });
 //////////////////////////////////delete image////////////////////////////////////////
-// s3.deleteImage(req.body.url).then(result => {
-//     db.deleteDoc(req.body.id)
-//         .then(result => {
 app.post("/delete", async (req, res) => {
     console.log("req.body", req.body);
     let s3Url = req.body.url;

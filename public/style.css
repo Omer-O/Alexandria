@@ -418,8 +418,6 @@ search-result > a {
 }
 
 .camera {
-    position: absolute;
-    z-index: 1;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -434,15 +432,17 @@ search-result > a {
     background-color: black;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
 }
-
+.captured-img-container canvas {
+    height: 100%;
+    width: 100%;
+}
 .captured-img-container img {
     margin-top: 18%;
     width: 900px;
     height: 1200px;
 }
+
 .capture-btn {
     position: fixed;
     bottom: 100px;
@@ -455,12 +455,6 @@ search-result > a {
     border-radius: 50%;
     font-size: 80px;
     position: absolute;
-}
-.stop-cam {
-    position: fixed;
-    left: 50px;
-    top: 50px;
-    z-index: 10;
 }
 .img-viewer {
     display: flex;
@@ -480,25 +474,26 @@ video {
     position: fixed;
     height: 88%;
 }
-
 .captured-nav button {
     width: 100%;
     background-color: blue;
     color: black;
 }
+
 .img-viewer img {
     width: 95%;
     height: 90%;
 }
 .text-viewer {
-    background-color: white;
+    background-color: #9E9E9E;
     overflow: scroll;
 }
 
 .text-viewer p {
     margin: 100px;
+    color: black;
     font-family: "Roboto Mono", monospace;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.2em;
     text-shadow: 0 8px 10px rgba(4, 4, 4, 0.18), 0 5px 7px rgba(0, 0, 0, 0.12);
     max-height: 70vh;
 }

@@ -12,6 +12,7 @@ import { WebcamCapture } from "./webcam";
 import { Home } from "./home";
 import { Scanner } from "./scanner";
 import { DocumentViewer } from "./document-viewer";
+import { TextViewer } from "./text-viewer";
 
 export class App extends React.Component {
     constructor(props) {
@@ -116,6 +117,7 @@ export class App extends React.Component {
                                 />
                             )}
                         />
+                        <Route path="/txt/:id" component={TextViewer} />
                     </div>
                 </div>
             </BrowserRouter>

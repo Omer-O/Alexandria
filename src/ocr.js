@@ -11,6 +11,7 @@ export class Ocr extends React.Component {
     }
     componentDidMount() {
         console.log("ocr did mount");
+        console.log("this.props.showText()", this.props.showText);
     }
     convertUrl() {
         console.log("trying to convrt");
@@ -20,14 +21,6 @@ export class Ocr extends React.Component {
 
         img.src = " ";
         this.readDocument(img);
-
-        // const url = this.props.img_url;
-        // fetch(url)
-        //     .then(res => res.blob()) // Gets the response and returns it as a blob
-        //     .then(blob => {
-        //         console.log("blob", blob);
-        //         this.readDocument(blob);
-        //     });
     }
     readDocument(img) {
         worker
@@ -53,8 +46,9 @@ export class Ocr extends React.Component {
                 docId: this.props.docId,
                 text: text
             })
-            .then(() => {
-                console.log("this.state.text", text);
+            .then(result => {
+                console.log("this.state.text:", result);
+                this.props.showText();
             });
     }
     render() {

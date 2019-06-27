@@ -118,6 +118,7 @@ export class ImgViewer extends React.Component {
                         <Ocr
                             img_url={this.props.props.img_url}
                             docId={this.props.props.id}
+                            showText={this.props.showText}
                         />
                     )}
                     <div className="nav-btn" onClick={this.alert}>

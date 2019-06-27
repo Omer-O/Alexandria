@@ -45,7 +45,13 @@ export class DocumentViewer extends React.Component {
         return (
             <div className="full-screen">
                 {this.state.TextVisible ? (
-                    <TextViewer txt={this.state.txt} hide={this.hideText} />
+                    <TextViewer
+                        key={this.props.match.url}
+                        match={this.props.match}
+                        history={this.props.history}
+                        txt={this.state.txt}
+                        hide={this.hideText}
+                    />
                 ) : (
                     <ImgViewer props={this.state} showText={this.showText} />
                 )}

@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "./axios";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Speak } from "./speak";
@@ -13,7 +15,22 @@ export class TextViewer extends React.Component {
         this.drakula = this.drakula.bind(this);
         this.alexandria = this.alexandria.bind(this);
     }
-    componentDidMount() {}
+
+    componentDidMount() {
+        console.log("TextViewer mount!!!!!!!!");
+        const id = this.props.match.params.id;
+
+        axios.get("/document/" + id).then(({ data }) => {
+            //console.log("request for same user");
+            if (data.success == false) {
+                this.props.history.push("/");
+            } else {
+                //        console.log("data at other profile", data);
+                this.setState(data);
+                console.log("this.state :", this.state);
+            }
+        });
+    }
     drakula() {
         if (this.state.drakula) {
             this.setState({ drakula: false });
@@ -49,11 +66,10 @@ export class TextViewer extends React.Component {
                     >
                         <p>{this.props.txt}</p>
                     </div>
-                    {this.state.alexandria && <Speak txt={this.props.txt} />}
+                    {this.state.alexandria && <Speak txt={this.state.txt} />}
                 </div>
                 <footer>
                     <div className="filler" />
-
                     <div className="nav-btn" onClick={this.drakula}>
                         Drackula
                     </div>
