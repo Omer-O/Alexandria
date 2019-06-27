@@ -31,6 +31,7 @@ export function FindDocs() {
     return (
         <div className="all-docs">
             <input
+                className="input-search"
                 name="find"
                 type="text"
                 placeholder="search"
@@ -83,13 +84,9 @@ export function FindDocs() {
                     ) : (
                         <div className="no-results">
                             <span>
-                                <p>We couldn't find anything for</p>
+                                <p>No results for:</p>
                                 <h4>{query}</h4>
                             </span>
-                            <p>
-                                Looking for people or posts? Try entering a
-                                name, location or different words.
-                            </p>
                         </div>
                     )}
                 </div>
