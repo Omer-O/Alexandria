@@ -287,12 +287,13 @@ footer {
 }
 .results {
     color: black;
-    width: 98vw;
+    width: 95vw;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 30%);
+    grid-template-rows: repeat(3, 25%);
     grid-row-gap: 0.1em;
-    grid-column-gap: 0.1em;
+    grid-column-gap: 30px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -451,6 +452,12 @@ search-result > a {
     border-radius: 50%;
     font-size: 80px;
     position: absolute;
+}
+.stop-cam {
+    position: fixed;
+    left: 50;
+    top: 50;
+    z-index: 10;
 }
 .img-viewer {
     display: flex;
