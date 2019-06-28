@@ -165,7 +165,7 @@ img.img-logo-welcome {
 header,
 footer {
     font-weight: bold;
-    background-color: #537483;
+    background-color: #1b5067;
     border: solid black 1px;
     height: 10vh;
     width: 100vw;
@@ -213,7 +213,7 @@ footer {
     align-items: center;
     height: 150px;
     width: 150px;
-    background-color: #537483;
+    background-color: #1b5067;
     color: white;
     border-radius: solid black;
     border-radius: 50%;
@@ -304,7 +304,7 @@ input[type="file"] {
     border: none;
 }
 .search-bar path {
-    color: #537483;
+    color: #1b5067;
 }
 .results {
     color: black;
@@ -537,7 +537,7 @@ video {
     position: fixed;
     left: 20%;
     top: 40%;
-    background-color: #537483;
+    background-color: #1b5067;
 }
 .alert span {
     width: 100px;

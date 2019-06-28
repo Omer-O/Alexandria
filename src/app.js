@@ -28,6 +28,7 @@ export class App extends React.Component {
 
         // this.uploadImage = this.uploadImage.bind(this);
     }
+    componentDidMount() {}
 
     showScanner() {
         this.setState({
@@ -68,6 +69,20 @@ export class App extends React.Component {
     }
 
     render() {
+        console.log(`
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄██████▄
+▒▒▒▒▒▒▒▒▒▒▄▄████████████▄
+▒▒▒▒▒▒▄▄██████████████████
+▒▒▒▄████▀▀▀██▀██▌███▀▀▀████
+▒▒▐▀████▌▀██▌▀▐█▌████▌█████▌
+▒▒█▒▒▀██▀▀▐█▐█▌█▌▀▀██▌██████
+▒▒█▒▒▒▒████████████████████▌
+▒▒▒▌▒▒▒▒█████░░░░░░░██████▀
+▒▒▒▀▄▓▓▓▒███░░░░░░█████▀▀
+▒▒▒▒▀░▓▓▒▐█████████▀▀▒
+▒▒▒▒▒░░▒▒▐█████▀▀▒▒▒▒▒▒
+▒▒░░░░░▀▀▀▀▀▀▒▒▒▒▒▒▒▒▒
+▒▒▒░░░░░░░░▒▒`);
         const imageUrl = this.state.imageUrl || "/img/default.png";
         const coverImgUrl = this.state.coverImgUrl;
         const id = this.state.id;
