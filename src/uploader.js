@@ -29,8 +29,7 @@ export class Uploader extends React.Component {
             .post("/store-document", data)
             .then(res => {
                 console.log("res.data in uploader", res.data);
-                this.props.hideUploader;
-                this.props.uploaded(res.data.imageUrl);
+                this.props.forceUpdate();
             })
             .catch(e => {
                 console.log("upload photo", e);
