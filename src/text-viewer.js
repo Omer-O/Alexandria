@@ -64,7 +64,7 @@ export class TextViewer extends React.Component {
                                 : "normal text-viewer"
                         }
                     >
-                        <p>{this.props.txt}</p>
+                        <p>{this.state.txt}</p>
                     </div>
                     {this.state.alexandria && <Speak txt={this.state.txt} />}
                 </div>

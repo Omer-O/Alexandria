@@ -474,6 +474,12 @@ search-result > a {
     font-size: 80px;
     position: absolute;
 }
+.stop-cam {
+    position: fixed;
+    left: 50;
+    top: 50;
+    z-index: 10;
+}
 .img-viewer {
     display: flex;
     flex-direction: column-reverse;

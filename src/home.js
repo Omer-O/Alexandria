@@ -8,7 +8,7 @@ import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 export function Home(props) {
-    const [query, setQuery] = useState("last9");
+    const [query, setQuery] = useState("last12");
     const [docs, setdoc] = useState([]);
 
     useEffect(

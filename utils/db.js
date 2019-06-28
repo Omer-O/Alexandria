@@ -37,8 +37,8 @@ module.exports.updateDoc = function(docId, text, title, tags) {
 };
 
 module.exports.findDocs = function(text) {
-    if (text == "last9") {
-        console.log("last 9 docs from db");
+    if (text == "last12") {
+        console.log("last 12 docs from db");
         return db.query(
             `
             SELECT * FROM documents ORDER BY id DESC LIMIT 12;
