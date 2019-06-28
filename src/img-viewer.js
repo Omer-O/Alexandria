@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Ocr } from "./ocr";
+import { TitleEditor } from "./titleedit";
 import axios from "./axios";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -15,12 +16,14 @@ export class ImgViewer extends React.Component {
         super(props);
         this.state = {
             rotation: 0,
-            alert: false
+            alert: false,
+            title: this.props.props.title
         };
         this.deleteImg = this.deleteImg.bind(this);
         this.rotate = this.rotate.bind(this);
         this.rotateleft = this.rotateleft.bind(this);
         this.alert = this.alert.bind(this);
+        this.titleEdit = this.titleEdit.bind(this);
     }
     componentDidMount() {}
     alert() {
@@ -43,6 +46,11 @@ export class ImgViewer extends React.Component {
             .catch(e => {
                 console.log(e);
             });
+    }
+    titleEdit(title) {
+        this.setState({
+            title: title
+        });
     }
     rotate() {
         let newRotation = this.state.rotation + 90;
@@ -89,7 +97,16 @@ export class ImgViewer extends React.Component {
                             id="read"
                             style={{ transform: `rotate(${rotation}deg)` }}
                         />
-                        <h3 className="img-title">{this.props.props.title}</h3>
+                        <div className="title-editor">
+                            <TitleEditor
+                                id={this.props.props.id}
+                                title={this.state.title}
+                                titleEdit={this.titleEdit}
+                            />
+                            <h3>
+                                {this.state.title || this.props.props.title}
+                            </h3>
+                        </div>
                     </div>
                 </div>
                 <footer>

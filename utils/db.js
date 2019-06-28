@@ -35,6 +35,15 @@ module.exports.updateDoc = function(docId, text, title, tags) {
         [docId || null, text, title, tags]
     );
 };
+module.exports.updateDocTitle = function(docId, title) {
+    return db.query(
+        `UPDATE documents
+            SET title = $2
+            WHERE id=$1
+            RETURNING title`,
+        [docId || null, title]
+    );
+};
 
 module.exports.findDocs = function(text) {
     if (text == "last12") {

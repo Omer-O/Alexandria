@@ -209,6 +209,22 @@ app.post("/update-text", async (req, res) => {
         console.log("error at stored update-text doc", e);
     }
 });
+/////////////////////////////////update-title/////////////////////////////////
+app.post("/update-title", async (req, res) => {
+    console.log("*******Update title*******");
+    console.log("req.body", req.body);
+    const docId = req.body.id;
+    const title = req.body.title;
+    console.log("*******Update title*******");
+
+    try {
+        const newData = await db.updateDocTitle(docId, title);
+        console.log("stored update-title doc", newData.rows[0]);
+        res.json(newData.rows[0]);
+    } catch (e) {
+        console.log("error at stored update-title doc", e);
+    }
+});
 
 /////////////////////////////////////registration login//////////////////////////////////////
 
