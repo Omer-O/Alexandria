@@ -165,7 +165,7 @@ img.img-logo-welcome {
 header,
 footer {
     font-weight: bold;
-    background-color: #537483;
+    background-color: #1b5067;
     border: solid black 1px;
     height: 10vh;
     width: 100vw;
@@ -203,27 +203,45 @@ footer {
     width: 100vw;
 }
 .cam-btn {
+    bottom: 80px;
+    right: 80px;
+    z-index: 10;
+}
+.home-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 150px;
     width: 150px;
-    background-color: #537483;
+    background-color: #1b5067;
     color: white;
     border-radius: solid black;
     border-radius: 50%;
     font-size: 70px;
-    position: absolute;
+    position: fixed;
+}
+
+input[type="file"] {
+    opacity: 0;
+    width: 150px;
+}
+.upload-btn {
     bottom: 80px;
-    right: 80px;
-    z-index: 10;
+    left: 80px;
+    z-index: 11;
 }
 .save-img-btn {
     background-color: white;
     color: black;
 }
-.icon {
-    color: white;
+.upload-icon {
+    position: fixed;
+    bottom: 120px;
+    left: 120px;
+    z-index: 10;
+}
+.upload-btn form {
+    z-index: 12;
 }
 .back {
     padding-top: 10px;
@@ -286,7 +304,7 @@ footer {
     border: none;
 }
 .search-bar path {
-    color: #537483;
+    color: #1b5067;
 }
 .results {
     color: black;
@@ -424,6 +442,8 @@ search-result > a {
     align-items: start;
     width: 100vw;
     height: 100vh;
+    position: absolute;
+    z-index: 100;
 }
 
 .captured-img-container {
@@ -432,6 +452,8 @@ search-result > a {
     background-color: black;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 .captured-img-container canvas {
     height: 100%;
@@ -445,7 +467,7 @@ search-result > a {
 
 .capture-btn {
     position: fixed;
-    bottom: 100px;
+    bottom: 50px;
     left: 40%;
     height: 150px;
     width: 150px;
@@ -458,8 +480,8 @@ search-result > a {
 }
 .stop-cam {
     position: fixed;
-    left: 50;
-    top: 50;
+    left: 50px;
+    top: 50px;
     z-index: 10;
 }
 .img-viewer {
@@ -478,11 +500,10 @@ search-result > a {
 
 video {
     position: fixed;
-    height: 88%;
+    height: 100%;
 }
 .captured-nav button {
-    width: 100%;
-    background-color: blue;
+    background-color: none;
     color: black;
 }
 .title-editor {
@@ -519,8 +540,8 @@ textarea.text-field {
     height: 90%;
 }
 .text-viewer {
-    background-color: #9E9E9E;
     overflow: scroll;
+    border: solid grey 1px;
 }
 
 .text-viewer p {
@@ -528,7 +549,6 @@ textarea.text-field {
     color: black;
     font-family: "Roboto Mono", monospace;
     letter-spacing: 0.2em;
-    text-shadow: 0 8px 10px rgba(4, 4, 4, 0.18), 0 5px 7px rgba(0, 0, 0, 0.12);
     max-height: 70vh;
 }
 .normal p {
@@ -545,7 +565,7 @@ textarea.text-field {
     position: fixed;
     left: 20%;
     top: 40%;
-    background-color: #537483;
+    background-color: #1b5067;
 }
 .alert span {
     width: 100px;
