@@ -9,10 +9,10 @@ export class TextViewer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            drakula: false,
+            dracula: false,
             alexandria: false
         };
-        this.drakula = this.drakula.bind(this);
+        this.dracula = this.dracula.bind(this);
         this.alexandria = this.alexandria.bind(this);
     }
 
@@ -31,11 +31,11 @@ export class TextViewer extends React.Component {
             }
         });
     }
-    drakula() {
-        if (this.state.drakula) {
-            this.setState({ drakula: false });
+    dracula() {
+        if (this.state.dracula) {
+            this.setState({ dracula: false });
         } else {
-            this.setState({ drakula: true });
+            this.setState({ dracula: true });
         }
     }
     alexandria() {
@@ -59,7 +59,7 @@ export class TextViewer extends React.Component {
                 <div className="mid-section">
                     <div
                         className={
-                            this.state.drakula
+                            this.state.dracula
                                 ? "dark text-viewer"
                                 : "normal text-viewer"
                         }
@@ -70,8 +70,8 @@ export class TextViewer extends React.Component {
                 </div>
                 <footer>
                     <div className="filler" />
-                    <div className="nav-btn" onClick={this.drakula}>
-                        Drackula
+                    <div className="nav-btn" onClick={this.dracula}>
+                        Dracula
                     </div>
                     <div className="nav-btn" onClick={this.alexandria}>
                         Alexandria

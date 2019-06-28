@@ -203,6 +203,11 @@ footer {
     width: 100vw;
 }
 .cam-btn {
+    bottom: 80px;
+    right: 80px;
+    z-index: 10;
+}
+.home-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -213,17 +218,30 @@ footer {
     border-radius: solid black;
     border-radius: 50%;
     font-size: 70px;
-    position: absolute;
+    position: fixed;
+}
+
+input[type="file"] {
+    opacity: 0;
+    width: 150px;
+}
+.upload-btn {
     bottom: 80px;
-    right: 80px;
-    z-index: 10;
+    left: 80px;
+    z-index: 11;
 }
 .save-img-btn {
     background-color: white;
     color: black;
 }
-.icon {
-    color: white;
+.upload-icon {
+    position: fixed;
+    bottom: 120px;
+    left: 120px;
+    z-index: 10;
+}
+.upload-btn form {
+    z-index: 12;
 }
 .back {
     padding-top: 10px;
@@ -472,7 +490,7 @@ search-result > a {
 
 video {
     position: fixed;
-    height: 88%;
+    height: 100%;
 }
 .captured-nav button {
     width: 100%;
@@ -485,7 +503,7 @@ video {
     height: 90%;
 }
 .text-viewer {
-    background-color: #9E9E9E;
+    background-color: #9e9e9e;
     overflow: scroll;
 }
 

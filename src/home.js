@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
+import { Uploader } from "./uploader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +14,7 @@ export function Home(props) {
     useEffect(
         () => {
             console.log(`${docs.length} have been rendered!`);
+
             let abort;
             axios
                 .post("/find-docs", { find: query })
@@ -35,7 +37,8 @@ export function Home(props) {
 
     return (
         <div className="docs-display">
-            <Link to="/camera" className="cam-btn">
+            <Uploader />
+            <Link to="/camera" className="cam-btn home-btn">
                 <FontAwesomeIcon icon={faCamera} />
             </Link>
             {props.searchVisible && (
